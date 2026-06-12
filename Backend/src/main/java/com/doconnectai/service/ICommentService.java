@@ -2,11 +2,12 @@ package com.doconnectai.service;
 
 import java.util.List;
 
+import com.doconnectai.dto.CommentDto;
 import com.doconnectai.entity.Comment;
 
 public interface ICommentService {
 	
-	Comment addComment(Comment cmnt);
+	CommentDto addComment(CommentDto cmnt);
 
-	List<Comment> getCommentsByAnswerId(int answerId);
+	List<CommentDto> getCommentsByAnswerId(int answerId);
 }
