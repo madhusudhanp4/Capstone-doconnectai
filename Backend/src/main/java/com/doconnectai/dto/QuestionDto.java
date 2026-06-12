@@ -1,6 +1,7 @@
 package com.doconnectai.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +21,7 @@ public class QuestionDto {
 	@NotBlank(message = "Description is required")
 	private String description;
 	
-	@NotBlank(message = "UserId is required")
+	@NotNull
 	private int userId;
 	
 	private String userName;

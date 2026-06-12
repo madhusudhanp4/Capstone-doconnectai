@@ -3,6 +3,7 @@ package com.doconnectai.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.doconnectai.dto.UserDto;
@@ -16,12 +17,15 @@ public class UserServiceImpl implements IUserService {
 	@Autowired
 	private UserRepo userRepo;
 	
+	@Autowired	
+	private BCryptPasswordEncoder pswrdEncoder;
+	
 	@Override
 	public UserDto registerUser(UserDto userDto) {
 		
 		User user = UserMapper.toEntity(userDto);
 		
-		user.setPassword("12345");
+		user.setPassword(pswrdEncoder.encode(userDto.getPassword()));
 		
 		User savedUser = userRepo.save(user);
 		

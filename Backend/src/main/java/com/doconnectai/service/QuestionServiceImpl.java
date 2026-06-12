@@ -19,25 +19,25 @@ public class QuestionServiceImpl implements IQuestionService {
 
 	@Autowired
 	private QuestionRepo qstnRepo;
-	
+
 	@Autowired
 	private UserRepo userRepo;
-	
+
 	@Override
 	public QuestionDto addQuestion(QuestionDto question) {
-		
+
 		Optional<User> userOpt = userRepo.findById(question.getUserId());
-		
-		if(userOpt.isEmpty()) {
-			return null;
+
+		if (userOpt.isEmpty()) {
+			throw new RuntimeException("User not found with id: " + question.getUserId());
 		}
-		
+
 		User user = userOpt.get();
-		
+
 		Question qstn = QuestionMapper.toEntity(question, user);
-		
+
 		Question saved = qstnRepo.save(qstn);
-		
+
 		return QuestionMapper.toDto(saved);
 	}
 
@@ -45,16 +45,14 @@ public class QuestionServiceImpl implements IQuestionService {
 	public List<QuestionDto> getAllQuestion() {
 
 		List<Question> questions = qstnRepo.findAll();
-		
-		return questions.stream()
-				.map(QuestionMapper::toDto)
-				.collect(Collectors.toList());
+
+		return questions.stream().map(QuestionMapper::toDto).collect(Collectors.toList());
 	}
 
 	@Override
 	public QuestionDto getQuestionById(int id) {
-		
-		Optional <Question> question = qstnRepo.findById(id);
+
+		Optional<Question> question = qstnRepo.findById(id);
 		return question.map(QuestionMapper::toDto).orElse(null);
 	}
 
