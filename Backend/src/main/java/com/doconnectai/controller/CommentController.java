@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.doconnectai.dto.CommentDto;
 import com.doconnectai.service.ICommentService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/comments")
 @CrossOrigin
@@ -23,7 +25,7 @@ public class CommentController {
 	private ICommentService cmtService;
 
 	@PostMapping
-	public CommentDto addCmt(@RequestBody CommentDto dto) {
+	public CommentDto addCmt(@Valid @RequestBody CommentDto dto) {
 
 		return cmtService.addComment(dto);
 	}

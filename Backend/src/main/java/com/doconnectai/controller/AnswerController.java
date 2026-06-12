@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.doconnectai.dto.AnswerDto;
 import com.doconnectai.service.IAnswerService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/answers")
 @CrossOrigin
@@ -23,7 +25,7 @@ public class AnswerController {
 	private IAnswerService ansService;
 	
 	@PostMapping
-	public AnswerDto addans(@RequestBody AnswerDto dto) {
+	public AnswerDto addans(@Valid @RequestBody AnswerDto dto) {
 		return ansService.addAnswer(dto);
 	}
 	

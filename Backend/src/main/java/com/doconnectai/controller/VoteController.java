@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.doconnectai.dto.VoteDto;
 import com.doconnectai.service.IVoterService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("votes")
 @CrossOrigin
@@ -23,7 +25,7 @@ public class VoteController {
 	private IVoterService vService;
 	
 	@PostMapping
-	public VoteDto addVote(@RequestBody VoteDto dto) {
+	public VoteDto addVote(@Valid @RequestBody VoteDto dto) {
 		
 		return vService.addVote(dto);
 	}

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.doconnectai.dto.UserDto;
 import com.doconnectai.service.UserServiceImpl;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/users")
 @CrossOrigin
@@ -21,7 +23,7 @@ public class UserController {
 	private UserServiceImpl userService;
 
 	@PostMapping("/register")
-	public UserDto registerUser(@RequestBody UserDto userDTO) {
+	public UserDto registerUser(@Valid @RequestBody UserDto userDTO) {
 
 		return userService.registerUser(userDTO);
 
