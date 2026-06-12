@@ -9,5 +9,9 @@ public interface IUserService {
 	UserDto getUserById(int id);
 	
 	UserDto getUserByEmail(String email);
+	
+	UserDto updateUser(Integer id, UserDto dto);
+	
+	void deleteUser(Integer id);
 
 }

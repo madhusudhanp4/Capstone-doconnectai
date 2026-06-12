@@ -22,5 +22,7 @@ public class CommentDto {
 	
 	@NotNull(message = "AnswerId is required")
 	private Integer answerId;
+	
+	
 
 }

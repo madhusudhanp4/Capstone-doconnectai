@@ -3,6 +3,7 @@ package com.doconnectai.mapper;
 import com.doconnectai.dto.CommentDto;
 import com.doconnectai.entity.Answer;
 import com.doconnectai.entity.Comment;
+import com.doconnectai.entity.Question;
 import com.doconnectai.entity.User;
 
 public class CommentMapper {

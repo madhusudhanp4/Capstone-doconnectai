@@ -27,7 +27,6 @@ public class AnswerMapper {
 		dto.setContent(answr.getContent());
 		
 		dto.setQuestionId(answr.getQuestion().getId());
-		dto.setUserName(answr.getUser().getName());
 		
 		return dto;
 	}

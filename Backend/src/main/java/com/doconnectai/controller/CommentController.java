@@ -32,7 +32,7 @@ public class CommentController {
 
 	@GetMapping("/answer/{answerId}")
 	public List<CommentDto> getCommentsByAnswerId(@PathVariable int answerId) {
-		return cmtService.getCommentsByAnswerId(answerId);
+		return cmtService.getCommentsByAnswer_Id(answerId);
 	}
 	
 	

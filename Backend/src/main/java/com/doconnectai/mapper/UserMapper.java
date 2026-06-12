@@ -1,6 +1,7 @@
 package com.doconnectai.mapper;
 
 import com.doconnectai.dto.UserDto;
+import com.doconnectai.entity.Role;
 import com.doconnectai.entity.User;
 
 public class UserMapper {
@@ -11,7 +12,7 @@ public class UserMapper {
 		user.setId(dto.getId());
 		user.setName(dto.getName());
 		user.setEmail(dto.getEmail());
-		user.setRole(dto.getRole());
+		user.setRole(Role.valueOf(dto.getRole()));
 		
 		return user;
 	}
@@ -23,7 +24,7 @@ public class UserMapper {
 		dto.setId(user.getId());
 		dto.setName(user.getName());
 		dto.setEmail(user.getEmail());
-		dto.setRole(user.getRole());
+		dto.setRole(user.getRole().name());
 		
 		return dto;
 	}

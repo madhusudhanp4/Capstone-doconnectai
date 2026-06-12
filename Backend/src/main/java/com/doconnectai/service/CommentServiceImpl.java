@@ -34,13 +34,21 @@ public class CommentServiceImpl implements ICommentService {
 		String email = (String) SecurityContextHolder
 				.getContext()
 				.getAuthentication()
-				.getPrincipal();
+				.getName();
 
 		User user = userRepo.findByEmail(email);
-
+		
+		if (user == null) {
+			throw new RuntimeException("User not found");
+		}
+		
+	    if (dto.getAnswerId() == null) {
+	        throw new RuntimeException("AnswerId is required for commenting");
+	    }
 
 		Answer answer = ansRepo.findById(dto.getAnswerId())
-				.orElseThrow(() -> new RuntimeException("Answer not found"));
+								.orElseThrow(() -> new 
+										RuntimeException("Answer not found"));
 
 		Comment comment = CommentMapper.toEntity(dto, user, answer);
 
@@ -51,9 +59,9 @@ public class CommentServiceImpl implements ICommentService {
 	}
 
 	@Override
-	public List<CommentDto> getCommentsByAnswerId(Integer answerId) {
+	public List<CommentDto> getCommentsByAnswer_Id(Integer answerId) {
 
-		List<Comment> cmts = cmntRepo.findByAnswerId(answerId);
+		List<Comment> cmts = cmntRepo.findByAnswer_Id(answerId);
 
 		return cmts.stream().map(CommentMapper::toDto).collect(Collectors.toList());
 	}

@@ -1,6 +1,7 @@
 package com.doconnectai.entity;
 
-import jakarta.persistence.Column;
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,6 +29,8 @@ public class Comment {
 	
 	private String content;
 	
+	private LocalDateTime createdAt = LocalDateTime.now();
+	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
@@ -35,5 +38,7 @@ public class Comment {
 	@ManyToOne
 	@JoinColumn(name = "answer_id")
 	private Answer answer;
+	
+	
 
 }

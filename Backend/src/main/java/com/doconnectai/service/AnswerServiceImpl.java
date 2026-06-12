@@ -31,7 +31,10 @@ public class AnswerServiceImpl implements IAnswerService {
 	@Override
 	public AnswerDto addAnswer(AnswerDto dto) {
 
-		String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String email = (String) SecurityContextHolder
+				.getContext()
+				.getAuthentication()
+				.getName();
 
 		User user = userRepo.findByEmail(email);
 

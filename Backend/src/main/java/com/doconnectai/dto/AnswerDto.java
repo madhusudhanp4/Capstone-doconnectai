@@ -18,7 +18,6 @@ public class AnswerDto {
 	@NotBlank(message = "Content is required")
 	private String content;
 	
-	private String userName;
 	
 	@NotNull(message = "QuestionId is required")
 	private Integer questionId;

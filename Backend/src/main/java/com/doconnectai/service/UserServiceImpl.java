@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.doconnectai.dto.UserDto;
+import com.doconnectai.entity.Role;
 import com.doconnectai.entity.User;
 import com.doconnectai.mapper.UserMapper;
 import com.doconnectai.repository.UserRepo;
@@ -16,38 +17,59 @@ public class UserServiceImpl implements IUserService {
 
 	@Autowired
 	private UserRepo userRepo;
-	
-	@Autowired	
+
+	@Autowired
 	private BCryptPasswordEncoder pswrdEncoder;
-	
+
 	@Override
 	public UserDto registerUser(UserDto userDto) {
-		
+
 		User user = UserMapper.toEntity(userDto);
-		
+
 		user.setPassword(pswrdEncoder.encode(userDto.getPassword()));
-		
+
+		user.setRole(Role.USER);
+
 		User savedUser = userRepo.save(user);
-		
+
 		return UserMapper.toDto(savedUser);
 	}
 
 	@Override
 	public UserDto getUserById(int id) {
-		
-		Optional<User>user = userRepo.findById(id);
+
+		Optional<User> user = userRepo.findById(id);
 		return user.map(UserMapper::toDto).orElse(null);
 	}
 
 	@Override
 	public UserDto getUserByEmail(String email) {
-		
+
 		User user = userRepo.findByEmail(email);
-		
-		if(user == null) return null;
-		
+
+		if (user == null)
+			return null;
+
 		return UserMapper.toDto(user);
 	}
 
-	
+	@Override
+	public UserDto updateUser(Integer id, UserDto dto) {
+
+		User user = userRepo.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+
+		user.setName(dto.getName());
+		user.setEmail(dto.getEmail());
+
+		User updated = userRepo.save(user);
+
+		return UserMapper.toDto(updated);
+	}
+
+	@Override
+	public void deleteUser(Integer id) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
