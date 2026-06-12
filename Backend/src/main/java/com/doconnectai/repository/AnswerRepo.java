@@ -9,5 +9,5 @@ import com.doconnectai.entity.Answer;
 
 public interface AnswerRepo extends JpaRepository<Answer, Integer> {
 	
-	List<Answer> findByQuestionId(int questionId);
+	List<Answer> findByQuestion_Id(Integer questionId);
 }

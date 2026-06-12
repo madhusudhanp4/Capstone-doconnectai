@@ -11,31 +11,23 @@ public class AnswerMapper {
 		
 		Answer answr = new Answer();
 		
-		answr.setId(dto.getId());
 		answr.setContent(dto.getContent());
+	
 		answr.setUser(user);
 		answr.setQuestion(qstn);
+		
 		return answr;
 	}
 	
 	public static AnswerDto toDto(Answer answr) {
 		
 		AnswerDto dto = new AnswerDto();
+		
 		dto.setId(answr.getId());
 		dto.setContent(answr.getContent());
 		
-		if(answr.getUser() != null) {
-			
-			dto.setUserId(answr.getUser().getId());
-			dto.setUserName(answr.getUser().getName());
-			
-		}
-		
-		if(answr.getQuestion() != null) {
-			
-			dto.setQuestionId(answr.getQuestion().getId());
-
-		}
+		dto.setQuestionId(answr.getQuestion().getId());
+		dto.setUserName(answr.getUser().getName());
 		
 		return dto;
 	}

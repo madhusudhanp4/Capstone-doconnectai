@@ -13,17 +13,14 @@ import lombok.Setter;
 @AllArgsConstructor
 public class VoteDto {
 	
-	private int id;
+	private Integer id;
 	
 	@NotBlank(message = "Vote type is required")
 	private String type;
 	
-	@NotNull(message = "UserId is required")
-	private int userId;
-	
 	private String userName;
 	
 	@NotNull(message = "AnswerId is required")
-	private int answerId;
+	private Integer answerId;
 	
 }

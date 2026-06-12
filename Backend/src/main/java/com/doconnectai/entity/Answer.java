@@ -23,9 +23,8 @@ public class Answer {
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	private int id;
+	private Integer id;
 	
-	@Column(length = 2000)
 	private String content;
 
 	@ManyToOne

@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.doconnectai.dto.QuestionDto;
@@ -26,13 +27,13 @@ public class QuestionServiceImpl implements IQuestionService {
 	@Override
 	public QuestionDto addQuestion(QuestionDto question) {
 
-		Optional<User> userOpt = userRepo.findById(question.getUserId());
+		String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		if (userOpt.isEmpty()) {
-			throw new RuntimeException("User not found with id: " + question.getUserId());
+		User user = userRepo.findByEmail(email);
+
+		if (user == null) {
+			throw new RuntimeException("User not found");
 		}
-
-		User user = userOpt.get();
 
 		Question qstn = QuestionMapper.toEntity(question, user);
 
@@ -50,7 +51,7 @@ public class QuestionServiceImpl implements IQuestionService {
 	}
 
 	@Override
-	public QuestionDto getQuestionById(int id) {
+	public QuestionDto getQuestionById(Integer id) {
 
 		Optional<Question> question = qstnRepo.findById(id);
 		return question.map(QuestionMapper::toDto).orElse(null);

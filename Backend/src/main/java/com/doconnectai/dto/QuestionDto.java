@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class QuestionDto {
 	
-	private int id;
+	private Integer id;
 	
 	@NotBlank(message = "Title is required")
 	private String title;
@@ -21,9 +21,7 @@ public class QuestionDto {
 	@NotBlank(message = "Description is required")
 	private String description;
 	
-	@NotNull
-	private int userId;
-	
+		
 	private String userName;
 
 }

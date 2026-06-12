@@ -10,6 +10,6 @@ public interface IQuestionService {
 	
 	List<QuestionDto> getAllQuestion();
 	
-	QuestionDto getQuestionById(int id);
+	QuestionDto getQuestionById(Integer id);
 
 }

@@ -9,5 +9,5 @@ public interface ICommentService {
 	
 	CommentDto addComment(CommentDto cmnt);
 
-	List<CommentDto> getCommentsByAnswerId(int answerId);
+	List<CommentDto> getCommentsByAnswerId(Integer answerId);
 }

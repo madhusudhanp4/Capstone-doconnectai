@@ -62,7 +62,7 @@ public class UserController {
 	public UserDto getUserById(@PathVariable int id) {
 
 		return userService.getUserById(id);
-
+		
 	}
 
 }

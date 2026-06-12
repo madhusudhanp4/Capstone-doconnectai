@@ -1,10 +1,10 @@
 package com.doconnectai.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.doconnectai.dto.VoteDto;
@@ -29,37 +29,32 @@ public class VoterServiceImpl implements IVoterService {
 	private AnswerRepo ansRepo;
 
 	@Override
-	public VoteDto addVote(VoteDto vote) {
+	public VoteDto addVote(VoteDto dto) {
 
-		Optional<User> userOpt = uRepo.findById(vote.getUserId());
-		Optional<Answer> answerOpt = ansRepo.findById(vote.getAnswerId());
+		String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		if(userOpt.isEmpty()) {
-		    throw new RuntimeException("User not found with id: " + vote.getUserId());
+		User user = uRepo.findByEmail(email);
+
+		if (user == null) {
+			throw new RuntimeException("User not found");
 		}
 
-		if(answerOpt.isEmpty()) {
-		    throw new RuntimeException("Answer not found with id: " + vote.getAnswerId());
-		}
+		Answer answer = ansRepo.findById(dto.getAnswerId())
+				.orElseThrow(() -> new RuntimeException("Answer not found"));
+
+		Vote vote = VoteMapper.toEntity(dto, user, answer);
 		
-		User u = userOpt.get();
-		Answer ans = answerOpt.get();
-		
-		Vote v = VoteMapper.toEntity(vote, u, ans);
-		
-		Vote saved = voterRepo.save(v);
+		Vote saved = voterRepo.save(vote);
 		
 		return VoteMapper.toDto(saved);
 	}
 
 	@Override
-	public List<VoteDto> getVotesByAnswerId(int answerId) {
+	public List<VoteDto> getVotesByAnswerId(Integer answerId) {
 
 		List<Vote> votes = voterRepo.findByAnswerId(answerId);
-		
-		return votes.stream()
-				.map(VoteMapper::toDto)
-				.collect(Collectors.toList());
+
+		return votes.stream().map(VoteMapper::toDto).collect(Collectors.toList());
 	}
 
 }

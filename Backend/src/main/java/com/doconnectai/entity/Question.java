@@ -24,11 +24,10 @@ public class Question {
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	private int id;
+	private Integer id;
 	
 	private String title;
 	
-	@Column(length = 2000)
 	private String description;
 	
 	@ManyToOne

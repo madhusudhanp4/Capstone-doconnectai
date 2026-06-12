@@ -8,6 +8,6 @@ public interface IVoterService {
 	
 	VoteDto addVote(VoteDto vote);
 	
-	List<VoteDto> getVotesByAnswerId(int answerId);
+	List<VoteDto> getVotesByAnswerId(Integer answerId);
 
 }

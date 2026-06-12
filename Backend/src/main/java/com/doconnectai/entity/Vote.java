@@ -22,7 +22,7 @@ public class Vote {
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	private int id;
+	private Integer id;
 	
 	private String type; //upvote or downvote
 	

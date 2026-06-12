@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 public class UserDto {
 	
-	private int id;
+	private Integer id;
 	
 	@NotBlank(message = "Name is required")
 	private String name;

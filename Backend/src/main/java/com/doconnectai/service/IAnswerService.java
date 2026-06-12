@@ -8,6 +8,6 @@ public interface IAnswerService {
 	
 	AnswerDto addAnswer(AnswerDto answer);
 	
-	List<AnswerDto> getAnswerByQuestionId(int questionId);
+	List<AnswerDto> getAnswerByQuestionId(Integer questionId);
 
 }

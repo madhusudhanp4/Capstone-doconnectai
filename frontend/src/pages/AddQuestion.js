@@ -19,17 +19,9 @@ function AddQuestion() {
         e.preventDefault();
 
         try {
-            const user = JSON.parse(localStorage.getItem("user"));
-            console.log(user);
-            if (!user) {
-                alert("Please register first");
-                return;
-            }
-
             const payload = {
                 title: question.title,
-                description: question.description,
-                userId: user.id
+                description: question.description
             };
 
             const response = await API.post("/questions", payload);
@@ -44,15 +36,12 @@ function AddQuestion() {
             });
 
         } catch (error) {
-            console.error(error);
+            console.error("FULL ERROR:", error);
+            console.log("RESPONSE:", error.response);
 
-            const message =
-                error.response?.data?.message ||
-                error.response?.data?.error ||
-                "Something went wrong";
-
-            alert(message);
+            alert(JSON.stringify(error.response?.data));
         }
+
     };
 
     return (

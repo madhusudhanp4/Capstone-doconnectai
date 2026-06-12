@@ -13,17 +13,14 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CommentDto {
 	
-	private int id;
+	private Integer id;
 	
 	@NotBlank(message = "Content is required")
 	private String content;
-	
-	@NotNull(message = "UserId is required")
-	private int userId;
-	
+
 	private String userName;
 	
 	@NotNull(message = "AnswerId is required")
-	private int answerId;
+	private Integer answerId;
 
 }

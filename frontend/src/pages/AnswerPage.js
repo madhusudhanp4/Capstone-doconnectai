@@ -5,7 +5,7 @@ function AnswerPage({ question }) {
 
     const [answers, setAnswers] = useState([]);
     const [content, setContent] = useState("");
-
+    const [commentText, setCommentText] = useState({});
     useEffect(() => {
         if (question) {
             fetchAnswers();
@@ -21,15 +21,67 @@ function AnswerPage({ question }) {
         }
     };
 
+    const handleCommentChange = (answerId, value) => {
+
+        setCommentText({
+            ...commentText,
+            [answerId]: value
+        });
+    };
+
+    const handleCommentSubmit = async (answerId) => {
+
+        try {
+
+            const payload = {
+                content: commentText[answerId],
+                answerId: answerId
+            };
+
+            await API.post("/comments", payload);
+
+            alert("Comment added");
+
+            setCommentText({
+                ...commentText,
+                [answerId]: ""
+            });
+
+            fetchAnswers();
+
+        } catch (err) {
+            alert("Error adding comment");
+            console.log(err);
+        }
+    };
+
+
+    const handleVote = async (answerId, type) => {
+
+        try {
+
+            const payload = {
+                type: type,
+                answerId: answerId
+            };
+
+            await API.post("/votes", payload);
+
+            alert(type + " successful");
+
+        } catch (err) {
+            alert("Error voting");
+            console.log(err);
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const user = JSON.parse(localStorage.getItem("user"));
 
             const payload = {
                 content: content,
-                userId: user.id,
                 questionId: question.id
             };
 
@@ -42,8 +94,8 @@ function AnswerPage({ question }) {
             fetchAnswers();
 
         } catch (err) {
-            alert(err.response?.data || "Error");
-            console.log(err);
+            alert(JSON.stringify(err.response?.data));
+            console.log(err.response);
         }
     };
 
@@ -85,14 +137,64 @@ function AnswerPage({ question }) {
                 {answers.length === 0 ? (
                     <p>No answers yet</p>
                 ) : (
+
                     answers.map((a) => (
                         <div key={a.id} className="card p-3 mb-3 shadow-sm">
+
                             <p>{a.content}</p>
                             <small className="text-muted">
                                 Answered by: {a.userName}
                             </small>
+
+                           
+                            <div className="mt-2">
+                                <button
+                                    className="btn btn-outline-success me-2"
+                                    onClick={() => handleVote(a.id, "UPVOTE")}
+                                >
+                                    👍 Upvote
+                                </button>
+
+                                <button
+                                    className="btn btn-outline-danger"
+                                    onClick={() => handleVote(a.id, "DOWNVOTE")}
+                                >
+                                    👎 Downvote
+                                </button>
+                            </div>
+
+                            {/* ✅ COMMENT BOX */}
+                            <div className="mt-3">
+                                <input
+                                    type="text"
+                                    className="form-control mb-2"
+                                    placeholder="Write a comment..."
+                                    value={commentText[a.id] || ""}
+                                    onChange={(e) =>
+                                        handleCommentChange(a.id, e.target.value)
+                                    }
+                                />
+
+                                <button
+                                    className="btn btn-sm btn-primary"
+                                    onClick={() => handleCommentSubmit(a.id)}
+                                >
+                                    Add Comment
+                                </button>
+                            </div>
+
+                            {/* ✅ COMMENTS LIST */}
+                            {a.comments && a.comments.map((c) => (
+                                <div key={c.id} className="mt-2 p-2 border rounded bg-light">
+                                    <small>
+                                        <b>{c.userName}:</b> {c.content}
+                                    </small>
+                                </div>
+                            ))}
+
                         </div>
                     ))
+
                 )}
             </div>
 

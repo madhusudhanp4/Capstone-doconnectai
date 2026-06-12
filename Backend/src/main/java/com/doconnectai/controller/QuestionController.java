@@ -18,7 +18,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/questions")
-@CrossOrigin
+@CrossOrigin (origins = "http://localhost:3000")
 public class QuestionController {
 	
 	@Autowired
@@ -36,7 +36,7 @@ public class QuestionController {
 	}
 	
 	@GetMapping("/{id}")
-	public QuestionDto getQuestionById(@PathVariable int id) {
+	public QuestionDto getQuestionById(@PathVariable Integer id) {
 		
 		return qstnService.getQuestionById(id);
 	}
