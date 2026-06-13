@@ -28,7 +28,7 @@ public class UserController {
 
 	@Autowired
 	private UserRepo userRepo;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
@@ -48,9 +48,10 @@ public class UserController {
 			throw new RuntimeException("Invalid password");
 		}
 
-		return jwtUtil.generateToken(user.getEmail());
+		return jwtUtil.generateToken(user.getEmail(), user.getRole().name());
 	}
 
+	
 	@PostMapping("/register")
 	public UserDto registerUser(@Valid @RequestBody UserDto userDTO) {
 
@@ -62,7 +63,8 @@ public class UserController {
 	public UserDto getUserById(@PathVariable int id) {
 
 		return userService.getUserById(id);
-		
+
 	}
+
 
 }

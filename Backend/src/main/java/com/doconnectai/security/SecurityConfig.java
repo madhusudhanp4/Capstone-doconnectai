@@ -22,7 +22,7 @@ public class SecurityConfig {
             .cors().and()
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/users/register", "/users/login").permitAll()
-                .requestMatchers("users/all").hasRole("ADMIN")
+                .requestMatchers("/users/all").hasRole("ADMIN")
                 .anyRequest().authenticated()
             )
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
