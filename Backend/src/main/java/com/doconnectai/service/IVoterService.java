@@ -6,11 +6,11 @@ import com.doconnectai.dto.VoteDto;
 
 public interface IVoterService {
 
-    VoteDto addVote(VoteDto vote);
+	VoteDto addVote(VoteDto vote);
 
-    void removeVote(Integer id);
-    
-    List<VoteDto> getVotesByAnswerId(Integer answerId);
+	void removeVote(Integer id);
 
-    Integer getVoteCount(Integer answerId);
+	List<VoteDto> getVotesByAnswerId(Integer answerId);
+
+	Integer getVoteCount(Integer answerId);
 }

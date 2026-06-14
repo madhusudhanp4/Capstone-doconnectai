@@ -16,7 +16,9 @@ import com.doconnectai.dto.VoteDto;
 import com.doconnectai.service.IVoterService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("votes")
 @CrossOrigin
@@ -28,12 +30,14 @@ public class VoteController {
 	@PostMapping
 	public VoteDto addVote(@Valid @RequestBody VoteDto dto) {
 
+		log.info("POST /vote added");
 		return vService.addVote(dto);
 	}
 
 	@DeleteMapping("/{id}")
 	public String removeVote(@PathVariable Integer id) {
 
+		log.info("DELETE /vote removed");
 		vService.removeVote(id);
 
 		return "Vote removed successfully";
@@ -42,12 +46,14 @@ public class VoteController {
 	@GetMapping("/count/{answerId}")
 	public Integer getVoteCount(@PathVariable Integer answerId) {
 
+		log.info("GET /vote count");
 		return vService.getVoteCount(answerId);
 	}
 
 	@GetMapping("/answer/{answerId}")
 	public List<VoteDto> getVotesByAnswerId(@PathVariable Integer answerId) {
 
+		log.info("GET /votes by answer id");
 		return vService.getVotesByAnswerId(answerId);
 	}
 }

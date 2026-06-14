@@ -22,7 +22,9 @@ import com.doconnectai.security.JwtUtil;
 import com.doconnectai.service.UserServiceImpl;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/users")
 @CrossOrigin
@@ -46,19 +48,23 @@ public class UserController {
 		User user = userRepo.findByEmail(dto.getEmail());
 
 		if (user == null) {
+			log.info("POST /login failed");
 			throw new RuntimeException("Invalid email");
 		}
 
 		if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
+			log.info("POST /login failed");
 			throw new RuntimeException("Invalid password");
 		}
-
+		
+		log.info("POST /login successful");
 		return jwtUtil.generateToken(user.getEmail(), user.getRole().name());
 	}
 
 	@PostMapping("/register")
 	public UserDto registerUser(@Valid @RequestBody UserDto userDTO) {
 
+		log.info("POST /new user registered");
 		return userService.registerUser(userDTO);
 
 	}
@@ -66,6 +72,8 @@ public class UserController {
 	@PreAuthorize("hasAnyRole('ADMIN','MODERATOR')")
 	@GetMapping("/{id}")
 	public UserDto getUserById(@PathVariable int id) {
+		
+		log.info("GET /user by  id");
 
 		return userService.getUserById(id);
 
@@ -74,7 +82,7 @@ public class UserController {
 	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/all")
 	public List<UserDto> getAllUsers() {
-
+		log.info("GET /listed all users");
 		return userService.getAllUsers();
 	}
 
@@ -82,6 +90,7 @@ public class UserController {
 	@PutMapping("/{id}")
 	public UserDto updateUser(@PathVariable Integer id, @Valid @RequestBody UserDto dto) {
 
+		log.info("PUT /user details updated");
 		return userService.updateUser(id, dto);
 	}
 
@@ -90,6 +99,8 @@ public class UserController {
 	public String deleteUser(@PathVariable Integer id) {
 
 		userService.deleteUser(id);
+		
+		log.info("DELETE /user deleted");
 
 		return "User deleted successfully";
 	}

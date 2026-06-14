@@ -17,6 +17,9 @@ import com.doconnectai.repository.AnswerRepo;
 import com.doconnectai.repository.UserRepo;
 import com.doconnectai.repository.VoteRepo;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class VoterServiceImpl implements IVoterService {
 
@@ -32,11 +35,14 @@ public class VoterServiceImpl implements IVoterService {
 	@Override
 	public VoteDto addVote(VoteDto dto) {
 
+		log.info("Adding vote for answer ID: {}", dto.getAnswerId());
+
 		String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		User user = uRepo.findByEmail(email);
 
 		if (user == null) {
+			log.warn("Authenticated user not found with email: {}", email);
 			throw new ResourceNotFoundException("User not found");
 		}
 
@@ -47,15 +53,22 @@ public class VoterServiceImpl implements IVoterService {
 
 		Vote saved = voterRepo.save(vote);
 
+		log.info("Vote added successfully. ID: {}", saved.getId());
+
 		return VoteMapper.toDto(saved);
 	}
 
 	@Override
 	public void removeVote(Integer id) {
 
+		log.info("Removing vote with ID: {}", id);
+
 		if (!voterRepo.existsById(id)) {
+			log.warn("Vote not found with ID: {}", id);
 			throw new ResourceNotFoundException("Vote not found with id : " + id);
 		}
+
+		log.info("Vote removed successfully. ID: {}", id);
 
 		voterRepo.deleteById(id);
 	}

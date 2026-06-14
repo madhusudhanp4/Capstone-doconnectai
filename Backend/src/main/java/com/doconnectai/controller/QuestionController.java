@@ -18,7 +18,9 @@ import com.doconnectai.dto.QuestionDto;
 import com.doconnectai.service.IQuestionService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/questions")
 @CrossOrigin (origins = "http://localhost:3000")
@@ -31,11 +33,14 @@ public class QuestionController {
 	@PostMapping
 	public QuestionDto addQuestion(@Valid @RequestBody QuestionDto dto) {
 		
+		log.info("POST /Question added");
 		return qstnService.addQuestion(dto);
 	}
 	
 	@GetMapping
 	public List<QuestionDto> getAllQuestions(){
+		
+		log.info("GET /listed all questions");
 		return qstnService.getAllQuestion();
 	}
 	
@@ -43,6 +48,7 @@ public class QuestionController {
 	@GetMapping("/{id}")
 	public QuestionDto getQuestionById(@PathVariable Integer id) {
 		
+		log.info("GET /question by id");
 		return qstnService.getQuestionById(id);
 	}
 	
@@ -50,6 +56,7 @@ public class QuestionController {
 	@PutMapping("/{id}")
 	public QuestionDto updateQuestion( @PathVariable Integer id, @Valid @RequestBody QuestionDto dto) {
 
+		log.info("PUT /question updated");
 	    return qstnService.updateQuestion(id, dto);
 	}
 	
@@ -58,7 +65,8 @@ public class QuestionController {
 	public String deleteQuestion(@PathVariable Integer id) {
 
 	    qstnService.deleteQuestion(id);
-
+	    
+	    log.info("DELETE /question deleted");
 	    return "Question deleted successfully";
 	}
 

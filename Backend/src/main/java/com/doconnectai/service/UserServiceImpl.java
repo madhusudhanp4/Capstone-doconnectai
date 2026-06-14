@@ -13,6 +13,9 @@ import com.doconnectai.exception.ResourceNotFoundException;
 import com.doconnectai.mapper.UserMapper;
 import com.doconnectai.repository.UserRepo;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class UserServiceImpl implements IUserService {
 
@@ -25,6 +28,8 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public UserDto registerUser(UserDto userDto) {
 
+		log.info("Registering user with email: {}", userDto.getEmail());
+
 		User user = UserMapper.toEntity(userDto);
 
 		user.setPassword(pswrdEncoder.encode(userDto.getPassword()));
@@ -33,43 +38,53 @@ public class UserServiceImpl implements IUserService {
 
 		User savedUser = userRepo.save(user);
 
+		log.info("User registered successfully with ID: {}", savedUser.getId());
+
 		return UserMapper.toDto(savedUser);
 	}
 
 	@Override
 	public UserDto getUserById(int id) {
+		log.info("Fetching user with ID: {}", id);
 
-		User user = userRepo.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("User not found with id : " + id));
+		User user = userRepo.findById(id).orElseThrow(() -> {
+			log.warn("User not found with ID: {}", id);
+			return new ResourceNotFoundException("User not found with id : " + id);
+		});
 
 		return UserMapper.toDto(user);
 	}
 
 	@Override
 	public UserDto getUserByEmail(String email) {
+		log.info("Fetching user with email: {}", email);
 
 		User user = userRepo.findByEmail(email);
 
 		if (user == null)
 			return null;
 
+		log.info("User found with email: {}", email);
 		return UserMapper.toDto(user);
 	}
 
 	@Override
 	public UserDto updateUser(Integer id, UserDto dto) {
+		log.info("Updating user with ID: {}", id);
 
-	    User user = userRepo.findById(id)
-	            .orElseThrow(() ->
-	                    new ResourceNotFoundException(
-	                            "User not found with id : " + id));
+		User user = userRepo.findById(id).orElseThrow(() -> {
+			log.warn("User not found with ID: {}", id);
+			return new ResourceNotFoundException("User not found with id : " + id);
+		});
 
-	    user.setName(dto.getName());
-	    user.setEmail(dto.getEmail());
+		user.setName(dto.getName());
+		user.setEmail(dto.getEmail());
 
-	    User updated = userRepo.save(user);
+		User updated = userRepo.save(user);
 
-	    return UserMapper.toDto(updated);
+		log.info("User updated successfully. ID: {}", updated.getId());
+
+		return UserMapper.toDto(updated);
 	}
 
 	@Override
@@ -82,13 +97,17 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public void deleteUser(Integer id) {
+		
+		log.info("Deleting user with ID: {}", id);
 
-	    User user = userRepo.findById(id)
-	            .orElseThrow(() ->
-	                    new ResourceNotFoundException(
-	                            "User not found with id : " + id));
+		User user = userRepo.findById(id).orElseThrow(() -> {
+			log.warn("User not found with ID: {}", id);
+			return new ResourceNotFoundException("User not found with id : " + id);
+		});
 
-	    userRepo.delete(user);
+		userRepo.delete(user);
+
+		log.info("User deleted successfully. ID: {}", id);
 	}
 
 }
