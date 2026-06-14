@@ -1,0 +1,33 @@
+.question-card,
+.question-preview {
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.question-card:hover,
+.question-preview:hover {
+    transform: translateY(-5px);
+}
+
+.question-card p,
+.question-preview p {
+    color: var(--text-secondary);
+    margin-top: 10px;
+}
+
+.question-card span,
+.question-preview span {
+    color: var(--primary);
+}
+
+.question-stats {
+    display: flex;
+    gap: 25px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.question-stats span {
+    color: var(--primary);
+    font-weight: 500;
+}

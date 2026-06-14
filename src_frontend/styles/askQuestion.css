@@ -1,0 +1,61 @@
+.ask-container {
+    min-height: 100vh;
+    background: #020617;
+}
+
+.ask-content {
+    flex: 1;
+    padding: 40px;
+    color: white;
+}
+
+.ask-card {
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 25px;
+
+    padding: 40px;
+
+    margin-top: 30px;
+
+    backdrop-filter: blur(20px);
+}
+
+.ask-form-group {
+    margin-bottom: 25px;
+}
+
+.ask-form-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: #cbd5e1;
+}
+
+.ask-form-group input,
+.ask-form-group textarea {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: #1E293B;
+
+    color: white;
+
+    outline: none;
+
+    font-size: 15px;
+}
+
+.ask-form-group textarea {
+    min-height: 200px;
+    resize: none;
+}

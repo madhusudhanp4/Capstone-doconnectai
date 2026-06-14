@@ -1,0 +1,38 @@
+.sidebar{
+    width:250px;
+
+    min-height:
+        calc(100vh - 70px);
+
+    background:
+        var(--bg-secondary);
+
+    padding:30px;
+
+    color:
+        var(--text-secondary);
+
+    border-right:
+        1px solid
+        var(--border);
+}
+
+.sidebar p{
+    margin-bottom:30px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:
+        var(--transition);
+}
+
+.sidebar p:hover{
+
+    color:
+        var(--primary);
+
+    transform:
+        translateX(5px);
+}

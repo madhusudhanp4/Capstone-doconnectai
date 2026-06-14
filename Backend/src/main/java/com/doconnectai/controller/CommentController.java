@@ -34,6 +34,5 @@ public class CommentController {
 	public List<CommentDto> getCommentsByAnswerId(@PathVariable int answerId) {
 		return cmtService.getCommentsByAnswer_Id(answerId);
 	}
-	
-	
+
 }
