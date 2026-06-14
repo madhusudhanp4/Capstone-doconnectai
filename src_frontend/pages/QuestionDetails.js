@@ -3,10 +3,11 @@ import AIAnswerCard from "../components/AIAnswerCard";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import AnswerCard from "../components/AnswerCard";
+import AnswerCard from "../components/AnswerCard/AnswerCard";
 import { getQuestionById } from "../services/questionService";
 import { getAnswersByQuestionId, addAnswer } from "../services/answerService";
 import "../styles/questionDetails.css";
+import { generateAIAnswer } from "../services/aiService";
 
 function QuestionDetails() {
 
@@ -46,14 +47,37 @@ function QuestionDetails() {
         }
     };
 
-    const generateAIAnswer =
-        () => {
+    const handleGenerateAIAnswer =
+        async () => {
 
-            setAiAnswer(
+            try {
 
-                "This is a dummy AI generated answer for testing purposes."
+                const dto = {
 
-            );
+                    title:
+                        question.title,
+
+                    description:
+                        question.description
+                };
+
+                const response =
+                    await generateAIAnswer(
+                        dto
+                    );
+
+                setAiAnswer(
+                    response.data
+                );
+            }
+            catch (error) {
+
+                console.log(error);
+
+                setAiAnswer(
+                    "Failed to generate AI answer."
+                );
+            }
         };
 
     const handleAnswerSubmit = async () => {
@@ -115,7 +139,7 @@ function QuestionDetails() {
 
                     <button
                         className="primary-btn"
-                        onClick={generateAIAnswer}
+                        onClick={handleGenerateAIAnswer}
                     >
                         Generate AI Answer
                     </button>

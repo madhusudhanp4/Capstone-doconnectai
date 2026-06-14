@@ -35,30 +35,48 @@ public class VoterServiceImpl implements IVoterService {
 	@Override
 	public VoteDto addVote(VoteDto dto) {
 
-		log.info("Adding vote for answer ID: {}", dto.getAnswerId());
+		log.info("Adding {} for answer ID: {}", dto.getType(), dto.getAnswerId());
 
 		String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		User user = uRepo.findByEmail(email);
 
-		if (user == null) {
-			log.warn("Authenticated user not found with email: {}", email);
-			throw new ResourceNotFoundException("User not found");
-		}
+		Answer answer = ansRepo.findById(dto.getAnswerId()).orElseThrow(() -> {
+			log.warn("Answer not found with ID: {}", dto.getAnswerId());
 
-		Answer answer = ansRepo.findById(dto.getAnswerId())
-				.orElseThrow(() -> new ResourceNotFoundException("Answer not found with id : " + dto.getAnswerId()));
+			return new ResourceNotFoundException("Answer not found with id : " + dto.getAnswerId());
+		});
 
 		Vote vote = VoteMapper.toEntity(dto, user, answer);
 
+		if ("UPVOTE".equalsIgnoreCase(dto.getType())) {
+
+			answer.setVoteCount(answer.getVoteCount() + 1);
+
+			log.info("Upvote added. New score: {}", answer.getVoteCount());
+		} else if ("DOWNVOTE".equalsIgnoreCase(dto.getType())) {
+
+			answer.setVoteCount(answer.getVoteCount() - 1);
+
+			log.info("Downvote added. New score: {}", answer.getVoteCount());
+		} else {
+
+			log.warn("Invalid vote type: {}", dto.getType());
+
+			throw new IllegalArgumentException("Invalid vote type: " + dto.getType());
+		}
+
+		ansRepo.save(answer);
+
 		Vote saved = voterRepo.save(vote);
 
-		log.info("Vote added successfully. ID: {}", saved.getId());
+		log.info("Vote saved successfully. Vote ID: {}, Answer ID: {}", saved.getId(), answer.getId());
 
 		return VoteMapper.toDto(saved);
 	}
 
 	@Override
+
 	public void removeVote(Integer id) {
 
 		log.info("Removing vote with ID: {}", id);

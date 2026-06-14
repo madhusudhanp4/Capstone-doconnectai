@@ -62,7 +62,7 @@ function AskQuestion() {
                 <Sidebar />
 
                 <div
-                    className="ask-content"
+                    className="content"
                 >
 
                     <h1>

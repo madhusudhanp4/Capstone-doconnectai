@@ -36,3 +36,19 @@
     transform:
         translateX(5px);
 }
+
+.sidebar-item {
+
+    transition:
+        transform 0.2s ease,
+        color 0.3s ease;
+}
+
+.sidebar-item:hover {
+
+    transform:
+        translateX(6px);
+
+    color:
+        var(--primary);
+}

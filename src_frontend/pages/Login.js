@@ -5,6 +5,8 @@ import { loginUser } from "../services/authService";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 
 function Login() {
 
@@ -29,14 +31,18 @@ function Login() {
 
             login({ email }, token);
 
-            alert("Login Successful");
+            toast.success(
+                "Login Successful!"
+            );
 
             navigate("/dashboard");
 
         } catch (error) {
             console.log(error);
 
-            alert("Invalid Credentials");
+            toast.error(
+                "Invalid Credentials!"
+            );
         }
     };
 

@@ -1,0 +1,43 @@
+.comment-card{
+    margin-top:20px;
+    padding:20px;
+}
+
+.comment-author{
+    display:block;
+    font-size:18px;
+    font-weight:600;
+    color:
+        var(--text-primary);
+
+    margin-bottom:10px;
+}
+
+.comment-content{
+    color:
+        var(--text-secondary);
+
+    font-size:16px;
+    line-height:1.6;
+}
+
+.comments-heading{
+    margin-top:20px;
+    color:
+        var(--text-primary);
+
+    font-weight:600;
+}
+
+.comment-box{
+    margin-top:20px;
+}
+
+.comment-box textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.comment-btn{
+    margin-top:15px;
+}

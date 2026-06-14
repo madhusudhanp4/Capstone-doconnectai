@@ -36,6 +36,7 @@ public class CommentController {
 
 	@GetMapping("/answer/{answerId}")
 	public List<CommentDto> getCommentsByAnswerId(@PathVariable Integer answerId) {
+		
 		log.info("GET /comments by answer");
 		return cmntService.getCommentsByAnswer_Id(answerId);
 	}

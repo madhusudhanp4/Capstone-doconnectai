@@ -17,7 +17,7 @@ public class AiController {
     private GeminiService geminiService;
 
     @PostMapping("/answer")
-    public String getAnswer(@RequestBody QuestionDto dto) {
+    public String getAnswer(@RequestBody QuestionDto dto) throws Exception{
 
         return geminiService.generateAnswer(dto);
     }

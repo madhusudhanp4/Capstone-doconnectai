@@ -13,9 +13,6 @@
 
     --border: #334155;
 
-    --shadow:
-        0px 0px 30px rgba(99, 102, 241, 0.35);
-
     --radius: 16px;
 
     --transition: 0.3s;
@@ -179,4 +176,24 @@ ul {
 
 .text-accent {
     color: var(--primary);
+}
+
+.content {
+    animation:
+        pageFade 0.3s ease;
+}
+
+@keyframes pageFade {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
 }
