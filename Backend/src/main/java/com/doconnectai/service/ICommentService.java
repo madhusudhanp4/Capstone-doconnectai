@@ -9,4 +9,6 @@ public interface ICommentService {
 	CommentDto addComment(CommentDto cmnt);
 
 	List<CommentDto> getCommentsByAnswer_Id(Integer answerId);
+	
+    void deleteComment(Integer id);
 }

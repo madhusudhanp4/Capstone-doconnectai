@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.doconnectai.dto.QuestionDto;
 import com.doconnectai.entity.Question;
 import com.doconnectai.entity.User;
+import com.doconnectai.exception.ResourceNotFoundException;
 import com.doconnectai.mapper.QuestionMapper;
 import com.doconnectai.repository.QuestionRepo;
 import com.doconnectai.repository.UserRepo;
@@ -27,13 +28,18 @@ public class QuestionServiceImpl implements IQuestionService {
 	@Override
 	public QuestionDto addQuestion(QuestionDto question) {
 
-		String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String email = (String) SecurityContextHolder
+				.getContext()
+				.getAuthentication()
+				.getPrincipal();
 
 		User user = userRepo.findByEmail(email);
 
 		if (user == null) {
-			throw new RuntimeException("User not found");
+			throw new ResourceNotFoundException(
+					"User not found");
 		}
+
 
 		Question qstn = QuestionMapper.toEntity(question, user);
 
@@ -47,14 +53,52 @@ public class QuestionServiceImpl implements IQuestionService {
 
 		List<Question> questions = qstnRepo.findAll();
 
-		return questions.stream().map(QuestionMapper::toDto).collect(Collectors.toList());
+		return questions.stream()
+				.map(QuestionMapper::toDto)
+				.collect(Collectors.toList());
 	}
 
 	@Override
-	public QuestionDto getQuestionById(Integer id) {
+	public QuestionDto getQuestionById(
+			Integer id) {
 
-		Optional<Question> question = qstnRepo.findById(id);
-		return question.map(QuestionMapper::toDto).orElse(null);
+		Question question =
+				qstnRepo.findById(id)
+				.orElseThrow(() ->
+				new ResourceNotFoundException(
+						"Question not found with id : "
+								+ id));
+
+		return QuestionMapper.toDto(question);
+	}
+
+	@Override
+	public QuestionDto updateQuestion(
+	        Integer id,
+	        QuestionDto dto) {
+
+	    Question question = qstnRepo.findById(id)
+	            .orElseThrow(() ->
+	                    new ResourceNotFoundException(
+	                            "Question not found with id : " + id));
+
+	    question.setTitle(dto.getTitle());
+	    question.setDescription(dto.getDescription());
+
+	    Question updated = qstnRepo.save(question);
+
+	    return QuestionMapper.toDto(updated);
+	}
+
+	@Override
+	public void deleteQuestion(Integer id) {
+
+	    if (!qstnRepo.existsById(id)) {
+	        throw new ResourceNotFoundException(
+	                "Question not found with id : " + id);
+	    }
+
+	    qstnRepo.deleteById(id);
 	}
 
 }

@@ -11,6 +11,7 @@ import com.doconnectai.dto.VoteDto;
 import com.doconnectai.entity.Answer;
 import com.doconnectai.entity.User;
 import com.doconnectai.entity.Vote;
+import com.doconnectai.exception.ResourceNotFoundException;
 import com.doconnectai.mapper.VoteMapper;
 import com.doconnectai.repository.AnswerRepo;
 import com.doconnectai.repository.UserRepo;
@@ -36,17 +37,36 @@ public class VoterServiceImpl implements IVoterService {
 		User user = uRepo.findByEmail(email);
 
 		if (user == null) {
-			throw new RuntimeException("User not found");
+			throw new ResourceNotFoundException("User not found");
 		}
 
 		Answer answer = ansRepo.findById(dto.getAnswerId())
-				.orElseThrow(() -> new RuntimeException("Answer not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("Answer not found with id : " + dto.getAnswerId()));
 
 		Vote vote = VoteMapper.toEntity(dto, user, answer);
-		
+
 		Vote saved = voterRepo.save(vote);
-		
+
 		return VoteMapper.toDto(saved);
+	}
+
+	@Override
+	public void removeVote(Integer id) {
+
+		if (!voterRepo.existsById(id)) {
+			throw new ResourceNotFoundException("Vote not found with id : " + id);
+		}
+
+		voterRepo.deleteById(id);
+	}
+
+	@Override
+	public Integer getVoteCount(Integer answerId) {
+
+		Answer answer = ansRepo.findById(answerId)
+				.orElseThrow(() -> new ResourceNotFoundException("Answer not found with id : " + answerId));
+
+		return answer.getVoteCount();
 	}
 
 	@Override
@@ -56,5 +76,4 @@ public class VoterServiceImpl implements IVoterService {
 
 		return votes.stream().map(VoteMapper::toDto).collect(Collectors.toList());
 	}
-
 }

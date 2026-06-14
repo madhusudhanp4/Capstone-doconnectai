@@ -11,6 +11,7 @@ import com.doconnectai.dto.CommentDto;
 import com.doconnectai.entity.Answer;
 import com.doconnectai.entity.Comment;
 import com.doconnectai.entity.User;
+import com.doconnectai.exception.ResourceNotFoundException;
 import com.doconnectai.mapper.CommentMapper;
 import com.doconnectai.repository.AnswerRepo;
 import com.doconnectai.repository.CommentRepo;
@@ -31,31 +32,26 @@ public class CommentServiceImpl implements ICommentService {
 	@Override
 	public CommentDto addComment(CommentDto dto) {
 
-		String email = (String) SecurityContextHolder
-				.getContext()
-				.getAuthentication()
-				.getName();
+		String email = (String) SecurityContextHolder.getContext().getAuthentication().getName();
 
 		User user = userRepo.findByEmail(email);
-		
+
 		if (user == null) {
-			throw new RuntimeException("User not found");
+			throw new ResourceNotFoundException("User not found");
 		}
-		
-	    if (dto.getAnswerId() == null) {
-	        throw new RuntimeException("AnswerId is required for commenting");
-	    }
+
+		if (dto.getAnswerId() == null) {
+			throw new RuntimeException("AnswerId is required for commenting");
+		}
 
 		Answer answer = ansRepo.findById(dto.getAnswerId())
-								.orElseThrow(() -> new 
-										RuntimeException("Answer not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("Answer not found with id : " + dto.getAnswerId()));
 
 		Comment comment = CommentMapper.toEntity(dto, user, answer);
 
 		Comment saved = cmntRepo.save(comment);
 
 		return CommentMapper.toDto(saved);
-
 	}
 
 	@Override
@@ -66,4 +62,15 @@ public class CommentServiceImpl implements ICommentService {
 		return cmts.stream().map(CommentMapper::toDto).collect(Collectors.toList());
 	}
 
+	
+	
+	@Override
+	public void deleteComment(Integer id) {
+
+		if (!cmntRepo.existsById(id)) {
+			throw new ResourceNotFoundException("Comment not found with id : " + id);
+		}
+
+		cmntRepo.deleteById(id);
+	}
 }

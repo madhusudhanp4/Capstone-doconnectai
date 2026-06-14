@@ -11,6 +11,7 @@ import com.doconnectai.dto.AnswerDto;
 import com.doconnectai.entity.Answer;
 import com.doconnectai.entity.Question;
 import com.doconnectai.entity.User;
+import com.doconnectai.exception.ResourceNotFoundException;
 import com.doconnectai.mapper.AnswerMapper;
 import com.doconnectai.repository.AnswerRepo;
 import com.doconnectai.repository.QuestionRepo;
@@ -31,25 +32,30 @@ public class AnswerServiceImpl implements IAnswerService {
 	@Override
 	public AnswerDto addAnswer(AnswerDto dto) {
 
-		String email = (String) SecurityContextHolder
-				.getContext()
-				.getAuthentication()
-				.getName();
+	    String email = (String) SecurityContextHolder
+	            .getContext()
+	            .getAuthentication()
+	            .getName();
 
-		User user = userRepo.findByEmail(email);
+	    User user = userRepo.findByEmail(email);
 
-		if (user == null) {
-			throw new RuntimeException("User not found");
-		}
+	    if (user == null) {
+	        throw new ResourceNotFoundException(
+	                "User not found");
+	    }
 
-		Question question = qstnRepo.findById(dto.getQuestionId())
-				.orElseThrow(() -> new RuntimeException("Question not found"));
+	    Question question =
+	            qstnRepo.findById(dto.getQuestionId())
+	                    .orElseThrow(() ->
+	                            new ResourceNotFoundException(
+	                                    "Question not found with id : "
+	                                            + dto.getQuestionId()));
 
-		Answer ans = AnswerMapper.toEntity(dto, user, question);
+	    Answer ans = AnswerMapper.toEntity( dto, user, question);
 
-		Answer saved = answrRepo.save(ans);
+	    Answer saved = answrRepo.save(ans);
 
-		return AnswerMapper.toDto(saved);
+	    return AnswerMapper.toDto(saved);
 	}
 	
 
@@ -59,6 +65,39 @@ public class AnswerServiceImpl implements IAnswerService {
 		List<Answer> ans = answrRepo.findByQuestion_Id(questionId);
 
 		return ans.stream().map(AnswerMapper::toDto).collect(Collectors.toList());
+	}
+
+
+
+	@Override
+	public AnswerDto updateAnswer(
+	        Integer id,
+	        AnswerDto dto) {
+
+	    Answer answer = answrRepo.findById(id)
+	            .orElseThrow(() ->
+	                    new ResourceNotFoundException(
+	                            "Answer not found with id : "
+	                                    + id));
+
+	    answer.setContent(dto.getContent());
+
+	    Answer updated = answrRepo.save(answer);
+
+	    return AnswerMapper.toDto(updated);
+	}
+
+
+	@Override
+	public void deleteAnswer(Integer id) {
+
+	    if (!answrRepo.existsById(id)) { 
+	    	throw new ResourceNotFoundException(
+	                "Answer not found with id : "
+	                        + id);
+	    }
+
+	    answrRepo.deleteById(id);
 	}
 
 }

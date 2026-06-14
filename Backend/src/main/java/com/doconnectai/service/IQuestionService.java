@@ -11,5 +11,9 @@ public interface IQuestionService {
 	List<QuestionDto> getAllQuestion();
 	
 	QuestionDto getQuestionById(Integer id);
+	
+	QuestionDto updateQuestion(Integer id, QuestionDto question);
+	
+	void deleteQuestion(Integer id);
 
 }

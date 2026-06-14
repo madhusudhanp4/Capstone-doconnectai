@@ -10,4 +10,7 @@ public interface IAnswerService {
 	
 	List<AnswerDto> getAnswerByQuestionId(Integer questionId);
 
+    AnswerDto updateAnswer( Integer id, AnswerDto dto);
+
+    void deleteAnswer(Integer id);
 }

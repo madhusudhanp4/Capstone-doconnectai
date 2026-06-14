@@ -1,11 +1,16 @@
 package com.doconnectai.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,7 +56,6 @@ public class UserController {
 		return jwtUtil.generateToken(user.getEmail(), user.getRole().name());
 	}
 
-	
 	@PostMapping("/register")
 	public UserDto registerUser(@Valid @RequestBody UserDto userDTO) {
 
@@ -59,6 +63,7 @@ public class UserController {
 
 	}
 
+	@PreAuthorize("hasAnyRole('ADMIN','MODERATOR')")
 	@GetMapping("/{id}")
 	public UserDto getUserById(@PathVariable int id) {
 
@@ -66,5 +71,27 @@ public class UserController {
 
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
+	@GetMapping("/all")
+	public List<UserDto> getAllUsers() {
+
+		return userService.getAllUsers();
+	}
+
+	@PreAuthorize("hasAnyRole('USER', 'MODERATOR', 'ADMIN')")
+	@PutMapping("/{id}")
+	public UserDto updateUser(@PathVariable Integer id, @Valid @RequestBody UserDto dto) {
+
+		return userService.updateUser(id, dto);
+	}
+
+	@PreAuthorize("hasRole('ADMIN')")
+	@DeleteMapping("/{id}")
+	public String deleteUser(@PathVariable Integer id) {
+
+		userService.deleteUser(id);
+
+		return "User deleted successfully";
+	}
 
 }

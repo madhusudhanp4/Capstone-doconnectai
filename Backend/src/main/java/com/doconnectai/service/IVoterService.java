@@ -5,9 +5,12 @@ import java.util.List;
 import com.doconnectai.dto.VoteDto;
 
 public interface IVoterService {
-	
-	VoteDto addVote(VoteDto vote);
-	
-	List<VoteDto> getVotesByAnswerId(Integer answerId);
 
+    VoteDto addVote(VoteDto vote);
+
+    void removeVote(Integer id);
+    
+    List<VoteDto> getVotesByAnswerId(Integer answerId);
+
+    Integer getVoteCount(Integer answerId);
 }

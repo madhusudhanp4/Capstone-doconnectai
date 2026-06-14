@@ -1,5 +1,6 @@
 package com.doconnectai.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -35,6 +36,7 @@ public class User {
 	private String password;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private Role role;
 
 }
