@@ -25,61 +25,41 @@ function QuestionDetails() {
 
     const loadQuestion = async () => {
         try {
-            const response =
-                await getQuestionById(id);
-
+            const response = await getQuestionById(id);
             setQuestion(response.data);
-        }
-        catch (error) {
+        } catch (error) {
             console.log(error);
         }
     };
 
     const loadAnswers = async () => {
         try {
-            const response =
-                await getAnswersByQuestionId(id);
-
+            const response = await getAnswersByQuestionId(id);
             setAnswers(response.data);
-        }
-        catch (error) {
+        } catch (error) {
             console.log(error);
         }
     };
 
-    const handleGenerateAIAnswer =
-        async () => {
 
-            try {
+    const handleGenerateAIAnswer = async () => {
+        try {
+            const dto = {
+                title: question.title,
+                description: question.description
+            };
 
-                const dto = {
+            const response = await generateAIAnswer(dto);
 
-                    title:
-                        question.title,
+            setAiAnswer(response.data);
 
-                    description:
-                        question.description
-                };
+        } catch (error) {
+            console.log(error);
+            setAiAnswer("Failed to generate AI answer.");
+        }
+    };
 
-                const response =
-                    await generateAIAnswer(
-                        dto
-                    );
-
-                setAiAnswer(
-                    response.data
-                );
-            }
-            catch (error) {
-
-                console.log(error);
-
-                setAiAnswer(
-                    "Failed to generate AI answer."
-                );
-            }
-        };
-
+  
     const handleAnswerSubmit = async () => {
 
         if (!content.trim()) {
@@ -88,7 +68,6 @@ function QuestionDetails() {
         }
 
         try {
-
             const answer = {
                 content: content,
                 questionId: id
@@ -97,16 +76,14 @@ function QuestionDetails() {
             await addAnswer(answer);
 
             setContent("");
-
             loadAnswers();
-        }
-        catch (error) {
+
+        } catch (error) {
             console.log(error);
         }
     };
 
     return (
-
         <div className="dashboard-page">
 
             <Navbar />
@@ -117,23 +94,17 @@ function QuestionDetails() {
 
                 <div className="content">
 
-                    <h1 className="question-title" >
+                    <h1 className="question-title">
                         {question.title}
                     </h1>
 
-                    <p className="question-author" >
+                    <p className="question-author">
                         Posted by {question.userName}
                     </p>
 
-                    <br />
+                    <h3>Description</h3>
 
-                    <h3>
-                        Description
-                    </h3>
-
-                    <p>
-                        {question.description}
-                    </p>
+                    <p>{question.description}</p>
 
                     <hr />
 
@@ -144,40 +115,24 @@ function QuestionDetails() {
                         Generate AI Answer
                     </button>
 
-                    <br />
-                    <br />
+                    <br /><br />
 
-                    {
-                        aiAnswer &&
+                    {aiAnswer && (
+                        <AIAnswerCard answer={aiAnswer} />
+                    )}
 
-                        <AIAnswerCard
-                            answer={aiAnswer}
-                        />
-                    }
+                    <h3 className="answers-section">Answers</h3>
 
-                    <h3 className="answers-section">
-                        Answers
-                    </h3>
-
-                    {
-                        answers.length === 0 ?
-
-                            <p>
-                                No answers yet.
-                                Be the first to answer!
-                            </p>
-
-                            :
-
-                            answers.map(answer => (
-
-                                <AnswerCard
-                                    key={answer.id}
-                                    answer={answer}
-                                />
-
-                            ))
-                    }
+                    {answers.length === 0 ? (
+                        <p>No answers yet. Be the first to answer!</p>
+                    ) : (
+                        answers.map(answer => (
+                            <AnswerCard
+                                key={answer.id}
+                                answer={answer}
+                            />
+                        ))
+                    )}
 
                     <hr />
 
@@ -188,9 +143,7 @@ function QuestionDetails() {
                         <textarea
                             className="form-input"
                             value={content}
-                            onChange={(e) =>
-                                setContent(e.target.value)
-                            }
+                            onChange={(e) => setContent(e.target.value)}
                             placeholder="Write your answer here..."
                         />
 
