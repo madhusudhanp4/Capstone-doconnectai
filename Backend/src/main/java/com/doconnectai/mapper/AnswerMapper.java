@@ -12,7 +12,7 @@ public class AnswerMapper {
 		Answer answr = new Answer();
 		
 		answr.setContent(dto.getContent());
-	
+		
 		answr.setUser(user);
 		answr.setQuestion(qstn);
 		
@@ -25,6 +25,7 @@ public class AnswerMapper {
 		
 		dto.setId(answr.getId());
 		dto.setContent(answr.getContent());
+		dto.setAccepted(answr.isAccepted());
 		
 		dto.setQuestionId(answr.getQuestion().getId());
 		

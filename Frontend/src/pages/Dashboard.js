@@ -2,10 +2,12 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import StatsCard from "../components/StatsCard";
 import QuestionPreview from "../components/QuestionPreview";
-
 import "../styles/dashboard.css";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
+
+   // const navigate = useNavigate()
 
     return (
 
@@ -23,7 +25,11 @@ function Dashboard() {
                         Welcome Back 👋
                     </h1>
 
+                    
+
                     <br />
+
+                                      
 
                     <div className="row g-4">
 
@@ -33,6 +39,8 @@ function Dashboard() {
                                 count="120"
                             />
                         </div>
+
+                        
 
                         <div className="col-md-3">
                             <StatsCard
@@ -80,6 +88,7 @@ function Dashboard() {
                             author="Kumar"
                             answers="8"
                         />
+                        
 
                     </div>
 

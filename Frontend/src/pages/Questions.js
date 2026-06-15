@@ -3,12 +3,14 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import QuestionCard from "../components/QuestionCard";
 import { getAllQuestions } from "../services/questionService";
+import { useNavigate } from "react-router-dom";
 
 
 function Questions() {
 
     const [questions, setQuestions] = useState([]);
     const [search, setSearch] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => { loadQuestions(); }, []);
 
@@ -34,7 +36,6 @@ function Questions() {
             <div
                 className="dashboard-body"
             >
-
                 <Sidebar />
 
                 <div
@@ -45,8 +46,10 @@ function Questions() {
                         Questions
                     </h1>
 
+
                     <button
                         className="login-btn"
+                        onClick={() => navigate("/ask-question")}
                     >
                         Ask Question
                     </button>

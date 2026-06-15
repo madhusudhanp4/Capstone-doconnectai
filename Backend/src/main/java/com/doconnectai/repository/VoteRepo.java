@@ -9,7 +9,7 @@ import com.doconnectai.entity.Vote;
 
 public interface VoteRepo extends JpaRepository<Vote, Integer> {
 
-	List<Vote> findByAnswerId(int answerId);
+	List<Vote> findByAnswer_Id(int answerId);
 
-	Optional<Vote> findByUserIdAndAnswerId(Integer userId, Integer answerId);
+	Optional<Vote> findByUser_IdAndAnswer_Id(Integer userId, Integer answerId);
 }

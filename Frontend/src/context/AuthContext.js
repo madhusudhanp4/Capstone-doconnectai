@@ -14,10 +14,8 @@ function AuthProvider({ children }) {
 
     const [user, setUser] =
         useState(
-            JSON.parse(
-                localStorage.getItem(
-                    "user"
-                )
+            JSON.parse(localStorage.getItem( "user")
+                
             ) || null
         );
 

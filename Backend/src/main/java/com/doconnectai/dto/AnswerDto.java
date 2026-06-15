@@ -22,4 +22,5 @@ public class AnswerDto {
 	@NotNull(message = "QuestionId is required")
 	private Integer questionId;
 
+	private boolean accepted;
 }

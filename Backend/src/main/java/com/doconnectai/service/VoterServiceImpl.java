@@ -1,6 +1,7 @@
 package com.doconnectai.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import com.doconnectai.dto.VoteDto;
 import com.doconnectai.entity.Answer;
 import com.doconnectai.entity.User;
 import com.doconnectai.entity.Vote;
+import com.doconnectai.entity.VoteType;
 import com.doconnectai.exception.ResourceNotFoundException;
 import com.doconnectai.mapper.VoteMapper;
 import com.doconnectai.repository.AnswerRepo;
@@ -21,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class VoterServiceImpl implements IVoterService {
+public class VoterServiceImpl implements IVoteService {
 
 	@Autowired
 	private VoteRepo voterRepo;
@@ -35,75 +37,96 @@ public class VoterServiceImpl implements IVoterService {
 	@Override
 	public VoteDto addVote(VoteDto dto) {
 
-		log.info("Adding {} for answer ID: {}", dto.getType(), dto.getAnswerId());
+		log.info("User voting {} on answer {}", dto.getType(), dto.getAnswerId());
 
-		String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+		String email = SecurityContextHolder.getContext().getAuthentication().getName();
 		User user = uRepo.findByEmail(email);
 
 		Answer answer = ansRepo.findById(dto.getAnswerId()).orElseThrow(() -> {
-			log.warn("Answer not found with ID: {}", dto.getAnswerId());
-
-			return new ResourceNotFoundException("Answer not found with id : " + dto.getAnswerId());
+			log.error("Answer not found with id {}", dto.getAnswerId());
+			return new ResourceNotFoundException("Answer not found");
 		});
 
-		Vote vote = VoteMapper.toEntity(dto, user, answer);
+		Optional<Vote> existingVoteOpt = voterRepo.findByUser_IdAndAnswer_Id(user.getId(), answer.getId());
 
-		if ("UPVOTE".equalsIgnoreCase(dto.getType())) {
+		VoteType newType = dto.getType();
 
-			answer.setVoteCount(answer.getVoteCount() + 1);
+		if (existingVoteOpt.isEmpty()) {
 
-			log.info("Upvote added. New score: {}", answer.getVoteCount());
-		} else if ("DOWNVOTE".equalsIgnoreCase(dto.getType())) {
+			Vote vote = VoteMapper.toEntity(dto, user, answer);
 
-			answer.setVoteCount(answer.getVoteCount() - 1);
+			if (newType == VoteType.UPVOTE) {
+				answer.setVoteCount(answer.getVoteCount() + 1);
+			} else {
+				answer.setVoteCount(answer.getVoteCount() - 1);
+			}
 
-			log.info("Downvote added. New score: {}", answer.getVoteCount());
-		} else {
+			ansRepo.save(answer);
+			Vote saved = voterRepo.save(vote);
 
-			log.warn("Invalid vote type: {}", dto.getType());
+			log.info("New vote added. AnswerId={}, NewCount={}", answer.getId(), answer.getVoteCount());
 
-			throw new IllegalArgumentException("Invalid vote type: " + dto.getType());
+			return VoteMapper.toDto(saved);
+		}
+
+		Vote existingVote = existingVoteOpt.get();
+
+		if (existingVote.getType() == newType) {
+			log.info("User already performed same vote. No change.");
+			return VoteMapper.toDto(existingVote);
+		}
+
+		VoteType oldType = existingVote.getType();
+
+		existingVote.setType(newType);
+
+		if (oldType == VoteType.UPVOTE && newType == VoteType.DOWNVOTE) {
+			answer.setVoteCount(answer.getVoteCount() - 2);
+		} else if (oldType == VoteType.DOWNVOTE && newType == VoteType.UPVOTE) {
+			answer.setVoteCount(answer.getVoteCount() + 2);
 		}
 
 		ansRepo.save(answer);
+		Vote updated = voterRepo.save(existingVote);
 
-		Vote saved = voterRepo.save(vote);
+		log.info("Vote updated. AnswerId={}, NewCount={}", answer.getId(), answer.getVoteCount());
 
-		log.info("Vote saved successfully. Vote ID: {}, Answer ID: {}", saved.getId(), answer.getId());
-
-		return VoteMapper.toDto(saved);
+		return VoteMapper.toDto(updated);
 	}
 
 	@Override
+	public void removeVote(Integer answerId) {
 
-	public void removeVote(Integer id) {
+		log.info("Removing vote for answer {}", answerId);
 
-		log.info("Removing vote with ID: {}", id);
+		String email = SecurityContextHolder.getContext().getAuthentication().getName();
+		User user = uRepo.findByEmail(email);
 
-		if (!voterRepo.existsById(id)) {
-			log.warn("Vote not found with ID: {}", id);
-			throw new ResourceNotFoundException("Vote not found with id : " + id);
+		Answer answer = ansRepo.findById(answerId).orElseThrow(() -> new ResourceNotFoundException("Answer not found"));
+
+		Vote vote = voterRepo.findByUser_IdAndAnswer_Id(user.getId(), answer.getId()).orElseThrow(() -> {
+			log.warn("Vote not found for user {} and answer {}", user.getId(), answerId);
+			return new ResourceNotFoundException("Vote not found");
+		});
+
+		if (vote.getType() == VoteType.UPVOTE) {
+			answer.setVoteCount(answer.getVoteCount() - 1);
+		} else {
+			answer.setVoteCount(answer.getVoteCount() + 1);
 		}
 
-		log.info("Vote removed successfully. ID: {}", id);
+		ansRepo.save(answer);
+		voterRepo.delete(vote);
 
-		voterRepo.deleteById(id);
-	}
-
-	@Override
-	public Integer getVoteCount(Integer answerId) {
-
-		Answer answer = ansRepo.findById(answerId)
-				.orElseThrow(() -> new ResourceNotFoundException("Answer not found with id : " + answerId));
-
-		return answer.getVoteCount();
+		log.info("Vote removed successfully. AnswerId={}, NewCount={}", answer.getId(), answer.getVoteCount());
 	}
 
 	@Override
 	public List<VoteDto> getVotesByAnswerId(Integer answerId) {
 
-		List<Vote> votes = voterRepo.findByAnswerId(answerId);
+		log.info("Fetching votes for answer {}", answerId);
+
+		List<Vote> votes = voterRepo.findByAnswer_Id(answerId);
 
 		return votes.stream().map(VoteMapper::toDto).collect(Collectors.toList());
 	}

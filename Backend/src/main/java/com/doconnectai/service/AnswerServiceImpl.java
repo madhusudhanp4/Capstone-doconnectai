@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 public class AnswerServiceImpl implements IAnswerService {
 
 	@Autowired
-	private AnswerRepo answrRepo;
+	private AnswerRepo answerRepo;
 
 	@Autowired
 	private UserRepo userRepo;
@@ -34,7 +34,7 @@ public class AnswerServiceImpl implements IAnswerService {
 
 	@Override
 	public AnswerDto addAnswer(AnswerDto dto) {
-		
+
 		log.info("Adding answer to question ID: {}", dto.getQuestionId());
 
 		String email = (String) SecurityContextHolder.getContext().getAuthentication().getName();
@@ -51,8 +51,8 @@ public class AnswerServiceImpl implements IAnswerService {
 
 		Answer ans = AnswerMapper.toEntity(dto, user, question);
 
-		Answer saved = answrRepo.save(ans);
-		
+		Answer saved = answerRepo.save(ans);
+
 		log.info("Answer added successfully. ID: {}", saved.getId());
 
 		return AnswerMapper.toDto(saved);
@@ -61,7 +61,7 @@ public class AnswerServiceImpl implements IAnswerService {
 	@Override
 	public List<AnswerDto> getAnswerByQuestionId(Integer questionId) {
 
-		List<Answer> ans = answrRepo.findByQuestion_Id(questionId);
+		List<Answer> ans = answerRepo.findByQuestion_Id(questionId);
 
 		return ans.stream().map(AnswerMapper::toDto).collect(Collectors.toList());
 	}
@@ -70,14 +70,14 @@ public class AnswerServiceImpl implements IAnswerService {
 	public AnswerDto updateAnswer(Integer id, AnswerDto dto) {
 
 		log.info("Updating answer with ID: {}", id);
-		
-		Answer answer = answrRepo.findById(id)
+
+		Answer answer = answerRepo.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Answer not found with id : " + id));
 
 		answer.setContent(dto.getContent());
 
-		Answer updated = answrRepo.save(answer);
-		
+		Answer updated = answerRepo.save(answer);
+
 		log.info("Answer updated successfully. ID: {}", updated.getId());
 
 		return AnswerMapper.toDto(updated);
@@ -85,17 +85,46 @@ public class AnswerServiceImpl implements IAnswerService {
 
 	@Override
 	public void deleteAnswer(Integer id) {
-		
+
 		log.info("Deleting answer with ID: {}", id);
 
-		if (!answrRepo.existsById(id)) {
+		if (!answerRepo.existsById(id)) {
 			log.warn("Answer not found with ID: {}", id);
 			throw new ResourceNotFoundException("Answer not found with id : " + id);
 		}
-		
+
 		log.info("Answer deleted successfully. ID: {}", id);
 
-		answrRepo.deleteById(id);
+		answerRepo.deleteById(id);
+	}
+
+	@Override
+	public AnswerDto acceptAnswer(Integer answerId) {
+
+		String email = SecurityContextHolder.getContext().getAuthentication().getName();
+
+		User currentUser = userRepo.findOptionalByEmail(email)
+		        .orElseThrow(() -> new RuntimeException("User not found"));
+		
+		Answer answer = answerRepo.findById(answerId).orElseThrow(() -> new RuntimeException("Answer not found"));
+
+		Question question = answer.getQuestion();
+
+		if (!question.getUser().getId().equals(currentUser.getId())) {
+			throw new RuntimeException("Only question owner can accept answer");
+		}
+
+		List<Answer> answers = answerRepo.findByQuestion_Id(question.getId());
+
+		for (Answer ans : answers) {
+			ans.setAccepted(false);
+		}
+
+		answer.setAccepted(true);
+
+		answerRepo.saveAll(answers);
+
+		return AnswerMapper.toDto(answer);
 	}
 
 }

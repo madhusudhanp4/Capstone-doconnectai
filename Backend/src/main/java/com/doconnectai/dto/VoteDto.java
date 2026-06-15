@@ -1,5 +1,7 @@
 package com.doconnectai.dto;
 
+import com.doconnectai.entity.VoteType;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -14,13 +16,10 @@ import lombok.Setter;
 public class VoteDto {
 	
 	private Integer id;
-	
-	@NotBlank(message = "Vote type is required")
-	private String type;
-	
-	private String userName;
-	
+		
 	@NotNull(message = "AnswerId is required")
 	private Integer answerId;
+	
+	private VoteType type;
 	
 }

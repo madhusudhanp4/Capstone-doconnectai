@@ -23,13 +23,8 @@ public class VoteMapper {
 
 		dto.setId(vote.getId());
 		dto.setType(vote.getType());
-
 		dto.setAnswerId(vote.getAnswer().getId());
 		
-		dto.setUserName(vote.getUser().getName());
-
-	
-
 		return dto;
 	}
 

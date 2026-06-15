@@ -19,6 +19,8 @@ function AnswerCard({ answer }) {
                 answerId={answer.id}
             />
 
+            <hr/>
+
             <CommentSection
                 answerId={answer.id}
             />

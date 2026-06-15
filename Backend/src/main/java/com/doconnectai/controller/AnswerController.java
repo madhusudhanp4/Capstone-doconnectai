@@ -61,4 +61,10 @@ public class AnswerController {
 
 	    return "Answer deleted successfully";
 	}
+	
+	
+	@PutMapping("/{id}/accept")
+	public AnswerDto acceptAnswer(@PathVariable Integer id) {
+	    return ansService.acceptAnswer(id);
+	}
 }

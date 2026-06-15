@@ -4,13 +4,12 @@ import java.util.List;
 
 import com.doconnectai.dto.VoteDto;
 
-public interface IVoterService {
+public interface IVoteService {
 
 	VoteDto addVote(VoteDto vote);
 
-	void removeVote(Integer id);
+	void removeVote(Integer answerId);
 
 	List<VoteDto> getVotesByAnswerId(Integer answerId);
 
-	Integer getVoteCount(Integer answerId);
 }

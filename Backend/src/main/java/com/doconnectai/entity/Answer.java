@@ -30,6 +30,8 @@ public class Answer {
 
 	private Integer voteCount = 0;
 	
+	private boolean accepted = false;
+	
 	private LocalDateTime createdAt = LocalDateTime.now();
 	
 	@ManyToOne

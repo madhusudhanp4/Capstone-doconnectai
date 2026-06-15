@@ -1,6 +1,7 @@
 package com.doconnectai.entity;
 
-import jakarta.persistence.Column;
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,6 +30,8 @@ public class Question {
 	private String title;
 	
 	private String description;
+	
+	private LocalDateTime createdAt = LocalDateTime.now();
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")

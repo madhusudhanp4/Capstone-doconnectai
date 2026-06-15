@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/login.css";
 import { registerUser } from "../services/authService";
-
+import { toast } from "react-toastify";
 
 function Register() {
 
@@ -24,11 +24,11 @@ function Register() {
 
         try {
             await registerUser(user);
-
-            alert("Registration Successful");
+            toast.success("Registration successful")
+            
         } catch (error) {
             console.log(error);
-            alert("Registration Failed");
+            toast.error("Registration failed");
         }
     };
 

@@ -13,4 +13,7 @@ public interface IAnswerService {
     AnswerDto updateAnswer( Integer id, AnswerDto dto);
 
     void deleteAnswer(Integer id);
+    
+    AnswerDto acceptAnswer(Integer answerId);
+    
 }

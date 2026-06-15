@@ -43,7 +43,7 @@ public class UserController {
 	private UserServiceImpl userService;
 
 	@PostMapping("/login")
-	public String login(@RequestBody UserDto dto) {
+	public String login(@Valid @RequestBody UserDto dto) {
 
 		User user = userRepo.findByEmail(dto.getEmail());
 
@@ -104,5 +104,7 @@ public class UserController {
 
 		return "User deleted successfully";
 	}
+	
+	
 
 }
