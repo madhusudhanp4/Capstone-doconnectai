@@ -36,8 +36,6 @@ public class QuestionServiceImpl implements IQuestionService {
 
 		User user = userRepo.findByEmail(email);
 
-		//log.info("Question creation requested by user: {}", email);
-
 		if (user == null) {
 
 			log.error("User not found with email: {}", email);

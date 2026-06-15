@@ -916,3 +916,363 @@ This generated password is for development use only. Your security configuration
 2026-06-15T02:52:01.547+05:30  INFO 23832 --- [doconnectai] [http-nio-8080-exec-3] c.doconnectai.service.VoterServiceImpl   : Vote saved successfully. Vote ID: 45, Answer ID: 4
 2026-06-15T02:52:01.556+05:30  INFO 23832 --- [doconnectai] [http-nio-8080-exec-7] c.doconnectai.controller.VoteController  : GET /vote count
 2026-06-15T02:52:01.569+05:30  INFO 23832 --- [doconnectai] [http-nio-8080-exec-4] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T07:14:39.823+05:30  INFO 26380 --- [doconnectai] [main] com.doconnectai.DoconnectaiApplication   : Starting DoconnectaiApplication using Java 21.0.3 with PID 26380 (C:\updatedCapstone\Capstone-doconnectai\Backend\target\classes started by PA20695581 in C:\updatedCapstone\Capstone-doconnectai\Backend)
+2026-06-15T07:14:39.827+05:30 DEBUG 26380 --- [doconnectai] [main] com.doconnectai.DoconnectaiApplication   : Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-06-15T07:14:39.828+05:30  INFO 26380 --- [doconnectai] [main] com.doconnectai.DoconnectaiApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-06-15T07:14:41.783+05:30  INFO 26380 --- [doconnectai] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-15T07:14:42.010+05:30  INFO 26380 --- [doconnectai] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 196 ms. Found 5 JPA repository interfaces.
+2026-06-15T07:14:43.317+05:30  INFO 26380 --- [doconnectai] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-15T07:14:43.343+05:30  INFO 26380 --- [doconnectai] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-15T07:14:43.343+05:30  INFO 26380 --- [doconnectai] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-06-15T07:14:43.443+05:30  INFO 26380 --- [doconnectai] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-15T07:14:43.444+05:30  INFO 26380 --- [doconnectai] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3501 ms
+2026-06-15T07:14:43.584+05:30 DEBUG 26380 --- [doconnectai] [main] com.doconnectai.security.JwtFilter       : Filter 'jwtFilter' configured for use
+2026-06-15T07:14:43.825+05:30  INFO 26380 --- [doconnectai] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-15T07:14:43.977+05:30  INFO 26380 --- [doconnectai] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-06-15T07:14:44.062+05:30  INFO 26380 --- [doconnectai] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-15T07:14:44.817+05:30  INFO 26380 --- [doconnectai] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-15T07:14:44.883+05:30  INFO 26380 --- [doconnectai] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-15T07:14:45.374+05:30  INFO 26380 --- [doconnectai] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6968bb65
+2026-06-15T07:14:45.380+05:30  INFO 26380 --- [doconnectai] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-15T07:14:45.586+05:30  INFO 26380 --- [doconnectai] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.4.9
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-15T07:14:47.259+05:30  INFO 26380 --- [doconnectai] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-15T07:14:47.423+05:30  INFO 26380 --- [doconnectai] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-15T07:14:48.101+05:30  WARN 26380 --- [doconnectai] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-15T07:14:48.160+05:30  WARN 26380 --- [doconnectai] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: d4c20384-5656-4edc-8cee-b05b1d69911e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-06-15T07:14:48.177+05:30  INFO 26380 --- [doconnectai] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-06-15T07:14:49.074+05:30  INFO 26380 --- [doconnectai] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-06-15T07:14:49.081+05:30  INFO 26380 --- [doconnectai] [main] com.doconnectai.DoconnectaiApplication   : Started DoconnectaiApplication in 10.168 seconds (process running for 11.692)
+2026-06-15T07:19:28.424+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-15T07:19:28.424+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-15T07:19:28.426+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-06-15T07:19:29.047+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.doconnectai.controller.UserController  : POST /login failed
+2026-06-15T07:19:40.323+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.doconnectai.controller.UserController  : POST /login successful
+2026-06-15T07:19:47.589+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:19:47.660+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-10] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:19:51.206+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:19:51.220+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-9] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:20:18.054+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.d.controller.QuestionController        : POST /Question added
+2026-06-15T07:20:18.055+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.d.service.QuestionServiceImpl          : Creating new question: Java
+2026-06-15T07:20:18.196+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.d.service.QuestionServiceImpl          : Question created successfully with id 1
+2026-06-15T07:20:18.243+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-3] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:20:18.278+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:20:28.169+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:20:28.186+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-10] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:20:31.379+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:20:31.394+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-9] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:20:32.272+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-6] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T07:20:32.272+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-5] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T07:20:32.273+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-6] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T07:20:32.284+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-6] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T07:20:32.294+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T07:20:32.294+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T07:20:32.300+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T07:20:32.306+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-10] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T07:20:44.720+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-9] c.d.controller.AnswerController          : POST /answer added
+2026-06-15T07:20:44.721+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-9] c.doconnectai.service.AnswerServiceImpl  : Adding answer to question ID: 1
+2026-06-15T07:20:44.750+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-9] c.doconnectai.service.AnswerServiceImpl  : Answer added successfully. ID: 1
+2026-06-15T07:20:44.770+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T07:20:44.805+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T07:20:44.805+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-10] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T07:20:44.831+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T07:20:44.842+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-1] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T07:20:44.861+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T07:20:44.873+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T07:20:48.831+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-3] c.doconnectai.controller.VoteController  : POST /vote added
+2026-06-15T07:20:48.831+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-3] c.doconnectai.service.VoterServiceImpl   : Adding DOWNVOTE for answer ID: 1
+2026-06-15T07:20:48.839+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-3] c.doconnectai.service.VoterServiceImpl   : Downvote added. New score: -1
+2026-06-15T07:20:48.879+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-3] c.doconnectai.service.VoterServiceImpl   : Vote saved successfully. Vote ID: 1, Answer ID: 1
+2026-06-15T07:20:48.891+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-5] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T07:20:48.908+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T07:21:00.065+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.d.controller.CommentController         : POST /comment added
+2026-06-15T07:21:00.065+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.d.service.CommentServiceImpl           : Adding comment to answer ID: 1
+2026-06-15T07:21:00.079+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.d.service.CommentServiceImpl           : Comment added successfully. ID: 1
+2026-06-15T07:21:00.096+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-1] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T07:21:10.753+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.d.controller.CommentController         : POST /comment added
+2026-06-15T07:21:10.753+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.d.service.CommentServiceImpl           : Adding comment to answer ID: 1
+2026-06-15T07:21:10.766+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.d.service.CommentServiceImpl           : Comment added successfully. ID: 2
+2026-06-15T07:21:10.782+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-3] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T07:21:21.396+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-9] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:21:21.410+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:21:29.192+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:21:29.208+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:21:30.773+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T07:21:30.773+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-9] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T07:21:30.774+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-9] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T07:21:30.778+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-9] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T07:21:30.787+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-10] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T07:21:30.788+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-1] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T07:21:30.788+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-1] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T07:21:30.795+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-1] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T07:21:30.806+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T07:21:30.809+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-3] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T07:21:30.823+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-9] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T07:21:30.825+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T07:21:30.830+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-6] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T07:21:30.846+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-5] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T07:21:35.806+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-1] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:21:35.828+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:21:57.254+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.d.controller.QuestionController        : POST /Question added
+2026-06-15T07:21:57.255+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.d.service.QuestionServiceImpl          : Creating new question: Fullstack
+2026-06-15T07:21:57.268+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.d.service.QuestionServiceImpl          : Question created successfully with id 2
+2026-06-15T07:21:57.290+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-9] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:21:57.307+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:22:05.341+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-10] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:22:05.354+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:22:06.285+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-9] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T07:22:06.285+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T07:22:06.286+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.d.service.QuestionServiceImpl          : Fetching question with id 2
+2026-06-15T07:22:06.290+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 2
+2026-06-15T07:22:06.297+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-6] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T07:22:06.299+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-5] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T07:22:06.299+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-5] c.d.service.QuestionServiceImpl          : Fetching question with id 2
+2026-06-15T07:22:06.303+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-5] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 2
+2026-06-15T07:22:16.234+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.d.controller.AnswerController          : POST /answer added
+2026-06-15T07:22:16.234+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.doconnectai.service.AnswerServiceImpl  : Adding answer to question ID: 2
+2026-06-15T07:22:16.246+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.doconnectai.service.AnswerServiceImpl  : Answer added successfully. ID: 2
+2026-06-15T07:22:16.258+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-1] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T07:22:16.279+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-6] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T07:22:16.279+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-5] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T07:22:16.292+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T07:22:16.292+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-10] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T07:22:16.302+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-1] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T07:22:16.314+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T07:22:17.760+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.doconnectai.controller.VoteController  : POST /vote added
+2026-06-15T07:22:17.760+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.doconnectai.service.VoterServiceImpl   : Adding UPVOTE for answer ID: 2
+2026-06-15T07:22:17.766+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.doconnectai.service.VoterServiceImpl   : Upvote added. New score: 1
+2026-06-15T07:22:17.779+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.doconnectai.service.VoterServiceImpl   : Vote saved successfully. Vote ID: 2, Answer ID: 2
+2026-06-15T07:22:17.790+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-3] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T07:22:17.803+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-5] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T07:22:30.830+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-10] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:22:30.843+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:22:36.819+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T07:22:36.819+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-6] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T07:22:36.819+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T07:22:36.824+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T07:22:36.832+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T07:22:36.832+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-10] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T07:22:36.833+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-10] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T07:22:36.837+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-10] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T07:22:36.847+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T07:22:36.847+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-3] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T07:22:36.859+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-6] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T07:22:36.859+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T07:22:36.877+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-9] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T07:22:36.892+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-1] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T07:22:42.829+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.doconnectai.controller.VoteController  : POST /vote added
+2026-06-15T07:22:42.829+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.doconnectai.service.VoterServiceImpl   : Adding DOWNVOTE for answer ID: 1
+2026-06-15T07:22:42.835+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.doconnectai.service.VoterServiceImpl   : Downvote added. New score: -2
+2026-06-15T07:22:42.845+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.doconnectai.service.VoterServiceImpl   : Vote saved successfully. Vote ID: 3, Answer ID: 1
+2026-06-15T07:22:42.858+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T07:22:42.873+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T07:23:07.428+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-9] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:23:07.439+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-1] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:23:08.385+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T07:23:08.385+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T07:23:08.385+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-3] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T07:23:08.389+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T07:23:08.398+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-6] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T07:23:08.398+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T07:23:08.398+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T07:23:08.402+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-7] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T07:23:08.412+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T07:23:08.412+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-4] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T07:23:08.424+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-2] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T07:23:08.424+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-3] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T07:23:08.433+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-9] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T07:23:08.448+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-5] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T07:23:17.439+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-8] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:23:17.453+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-1] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T07:25:18.388+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-6] c.doconnectai.controller.UserController  : POST /new user registered
+2026-06-15T07:25:18.388+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-6] c.doconnectai.service.UserServiceImpl    : Registering user with email: prabhas@gmail.com
+2026-06-15T07:25:18.482+05:30  INFO 26380 --- [doconnectai] [http-nio-8080-exec-6] c.doconnectai.service.UserServiceImpl    : User registered successfully with ID: 3
+2026-06-15T08:04:00.170+05:30  WARN 26380 --- [doconnectai] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=32m44s85ms434µs899ns).
+2026-06-15T09:10:49.981+05:30  WARN 26380 --- [doconnectai] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h6m49s809ms843µs501ns).
+2026-06-15T09:14:18.986+05:30  INFO 26380 --- [doconnectai] [RMI TCP Connection(26)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2026-06-15T09:14:19.003+05:30  INFO 26380 --- [doconnectai] [RMI TCP Connection(26)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-15T09:14:19.015+05:30  INFO 26380 --- [doconnectai] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-15T09:14:19.026+05:30  INFO 26380 --- [doconnectai] [RMI TCP Connection(26)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-15T09:14:19.035+05:30  INFO 26380 --- [doconnectai] [RMI TCP Connection(26)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-15T09:14:19.040+05:30  INFO 26380 --- [doconnectai] [RMI TCP Connection(26)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-15T09:14:22.352+05:30  INFO 24568 --- [doconnectai] [main] com.doconnectai.DoconnectaiApplication   : Starting DoconnectaiApplication using Java 21.0.3 with PID 24568 (C:\updatedCapstone\Capstone-doconnectai\Backend\target\classes started by PA20695581 in C:\updatedCapstone\Capstone-doconnectai\Backend)
+2026-06-15T09:14:22.356+05:30 DEBUG 24568 --- [doconnectai] [main] com.doconnectai.DoconnectaiApplication   : Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-06-15T09:14:22.356+05:30  INFO 24568 --- [doconnectai] [main] com.doconnectai.DoconnectaiApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-06-15T09:14:23.600+05:30  INFO 24568 --- [doconnectai] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-15T09:14:23.730+05:30  INFO 24568 --- [doconnectai] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 112 ms. Found 5 JPA repository interfaces.
+2026-06-15T09:14:24.510+05:30  INFO 24568 --- [doconnectai] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-15T09:14:24.530+05:30  INFO 24568 --- [doconnectai] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-15T09:14:24.531+05:30  INFO 24568 --- [doconnectai] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-06-15T09:14:24.606+05:30  INFO 24568 --- [doconnectai] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-15T09:14:24.606+05:30  INFO 24568 --- [doconnectai] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2169 ms
+2026-06-15T09:14:24.685+05:30 DEBUG 24568 --- [doconnectai] [main] com.doconnectai.security.JwtFilter       : Filter 'jwtFilter' configured for use
+2026-06-15T09:14:24.854+05:30  INFO 24568 --- [doconnectai] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-15T09:14:24.998+05:30  INFO 24568 --- [doconnectai] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-06-15T09:14:25.077+05:30  INFO 24568 --- [doconnectai] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-15T09:14:25.660+05:30  INFO 24568 --- [doconnectai] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-15T09:14:25.726+05:30  INFO 24568 --- [doconnectai] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-15T09:14:26.071+05:30  INFO 24568 --- [doconnectai] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6968bb65
+2026-06-15T09:14:26.074+05:30  INFO 24568 --- [doconnectai] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-15T09:14:26.231+05:30  INFO 24568 --- [doconnectai] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.4.9
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-15T09:14:27.713+05:30  INFO 24568 --- [doconnectai] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-15T09:14:27.855+05:30  INFO 24568 --- [doconnectai] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-15T09:14:28.548+05:30  WARN 24568 --- [doconnectai] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-15T09:14:28.616+05:30  WARN 24568 --- [doconnectai] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: a53fe596-542a-45dd-b6fa-62904d57351e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-06-15T09:14:28.640+05:30  INFO 24568 --- [doconnectai] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-06-15T09:14:29.431+05:30  INFO 24568 --- [doconnectai] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-06-15T09:14:29.436+05:30  INFO 24568 --- [doconnectai] [main] com.doconnectai.DoconnectaiApplication   : Started DoconnectaiApplication in 7.803 seconds (process running for 8.654)
+2026-06-15T09:14:49.702+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-15T09:14:49.702+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-15T09:14:49.704+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-06-15T09:14:50.344+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-2] c.doconnectai.controller.UserController  : POST /login successful
+2026-06-15T09:14:56.460+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-5] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:14:56.547+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-6] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:14:58.240+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-1] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T09:14:58.271+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-3] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T09:14:58.283+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-7] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T09:14:58.285+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-9] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T09:14:58.314+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-10] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T09:14:58.322+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-4] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T09:14:58.325+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-5] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T09:14:58.351+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-8] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T09:14:58.358+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-2] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T09:14:58.359+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-2] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T09:14:58.366+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-2] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T09:14:58.376+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-6] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T09:14:58.376+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-6] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T09:14:58.383+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-6] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T09:15:50.479+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-1] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:15:50.494+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-9] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:15:54.836+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-2] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T09:15:54.837+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-6] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T09:15:54.837+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-6] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T09:15:54.841+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-6] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T09:15:54.852+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-3] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T09:15:54.852+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-7] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T09:15:54.853+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-7] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T09:15:54.857+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-7] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T09:15:54.863+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-8] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T09:15:54.863+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-4] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T09:15:54.878+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-6] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T09:15:54.878+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-2] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T09:15:54.886+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-5] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T09:15:54.902+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-9] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T09:16:15.511+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-3] c.doconnectai.controller.VoteController  : POST /vote added
+2026-06-15T09:16:15.511+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-3] c.doconnectai.service.VoterServiceImpl   : Adding UPVOTE for answer ID: 1
+2026-06-15T09:16:15.520+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-3] c.doconnectai.service.VoterServiceImpl   : Upvote added. New score: -1
+2026-06-15T09:16:15.635+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-3] c.doconnectai.service.VoterServiceImpl   : Vote saved successfully. Vote ID: 4, Answer ID: 1
+2026-06-15T09:16:15.651+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-4] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T09:16:15.671+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-10] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T09:17:43.450+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-8] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:17:43.465+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-10] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:17:45.100+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-3] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T09:17:45.101+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-9] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T09:17:45.101+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-9] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T09:17:45.105+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-9] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T09:17:45.115+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-7] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T09:17:45.115+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-4] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T09:17:45.116+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-4] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T09:17:45.123+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-4] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T09:17:45.131+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-5] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T09:17:45.131+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-6] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T09:17:45.144+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-9] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T09:17:45.144+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-3] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T09:17:45.154+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-10] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T09:17:45.167+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-2] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T09:34:21.829+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-10] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:34:21.851+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-2] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:34:24.690+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-4] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:34:24.710+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-7] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:34:28.369+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-8] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:34:28.384+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-6] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:34:33.618+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-10] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:34:33.654+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-2] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:34:36.831+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-4] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:34:36.846+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-7] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:34:39.133+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-8] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:34:39.145+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-6] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:51:37.045+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-4] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:51:37.071+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-7] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:51:50.173+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-8] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:51:50.187+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-6] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:53:33.038+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-2] c.doconnectai.controller.UserController  : POST /login successful
+2026-06-15T09:53:37.040+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-5] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:53:37.059+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-1] c.d.controller.QuestionController        : GET /listed all questions
+2026-06-15T09:53:39.920+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-2] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T09:53:39.920+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-10] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T09:53:39.921+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-10] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T09:53:39.926+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-10] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T09:53:39.935+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-4] c.d.controller.QuestionController        : GET /question by id
+2026-06-15T09:53:39.935+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-4] c.d.service.QuestionServiceImpl          : Fetching question with id 1
+2026-06-15T09:53:39.938+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-7] c.d.controller.AnswerController          : GET /answer called by question id
+2026-06-15T09:53:39.943+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-4] c.d.service.QuestionServiceImpl          : Question fetched successfully with id 1
+2026-06-15T09:53:39.960+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-3] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T09:53:39.960+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-9] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T09:53:39.977+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-10] c.doconnectai.controller.VoteController  : GET /vote count
+2026-06-15T09:53:39.978+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-2] c.d.controller.CommentController         : GET /comments by answer
+2026-06-15T09:53:39.992+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-1] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T09:53:40.013+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-4] c.doconnectai.controller.VoteController  : GET /votes by answer id
+2026-06-15T10:13:09.539+05:30  INFO 24568 --- [doconnectai] [http-nio-8080-exec-2] c.doconnectai.controller.UserController  : POST /login successful
+2026-06-15T10:40:29.394+05:30  INFO 24568 --- [doconnectai] [RMI TCP Connection(89)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2026-06-15T10:40:29.474+05:30  INFO 24568 --- [doconnectai] [RMI TCP Connection(89)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-15T10:40:29.493+05:30  INFO 24568 --- [doconnectai] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-15T10:40:29.525+05:30  INFO 24568 --- [doconnectai] [RMI TCP Connection(89)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-15T10:40:29.551+05:30  INFO 24568 --- [doconnectai] [RMI TCP Connection(89)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-15T10:40:29.559+05:30  INFO 24568 --- [doconnectai] [RMI TCP Connection(89)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-15T11:38:09.826+05:30  INFO 1668 --- [doconnectai] [main] c.d.DoconnectaiApplicationTests          : Starting DoconnectaiApplicationTests using Java 21.0.3 with PID 1668 (started by PA20695581 in C:\updatedCapstone\Capstone-doconnectai\Backend)
+2026-06-15T11:38:09.827+05:30 DEBUG 1668 --- [doconnectai] [main] c.d.DoconnectaiApplicationTests          : Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-06-15T11:38:09.828+05:30  INFO 1668 --- [doconnectai] [main] c.d.DoconnectaiApplicationTests          : No active profile set, falling back to 1 default profile: "default"
+2026-06-15T11:38:10.658+05:30  INFO 1668 --- [doconnectai] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-15T11:38:10.750+05:30  INFO 1668 --- [doconnectai] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 5 JPA repository interfaces.
+2026-06-15T11:38:11.472+05:30  INFO 1668 --- [doconnectai] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-15T11:38:11.563+05:30  INFO 1668 --- [doconnectai] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-06-15T11:38:11.599+05:30  INFO 1668 --- [doconnectai] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-15T11:38:11.722+05:30  INFO 1668 --- [doconnectai] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-15T11:38:11.754+05:30  INFO 1668 --- [doconnectai] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-15T11:38:12.126+05:30  INFO 1668 --- [doconnectai] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2b4ba2d9
+2026-06-15T11:38:12.130+05:30  INFO 1668 --- [doconnectai] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-15T11:38:12.267+05:30  INFO 1668 --- [doconnectai] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.4.9
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-15T11:38:13.139+05:30  INFO 1668 --- [doconnectai] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-15T11:38:13.266+05:30  INFO 1668 --- [doconnectai] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-15T11:38:13.833+05:30  WARN 1668 --- [doconnectai] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-15T11:38:13.885+05:30  WARN 1668 --- [doconnectai] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: c138850f-e66b-4952-91fd-59f4a4812d07
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-06-15T11:38:13.900+05:30  INFO 1668 --- [doconnectai] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-06-15T11:38:14.777+05:30  INFO 1668 --- [doconnectai] [main] c.d.DoconnectaiApplicationTests          : Started DoconnectaiApplicationTests in 5.264 seconds (process running for 18.253)
+2026-06-15T11:38:14.814+05:30  INFO 1668 --- [doconnectai] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-15T11:38:14.819+05:30  INFO 1668 --- [doconnectai] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-15T11:38:14.829+05:30  INFO 1668 --- [doconnectai] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

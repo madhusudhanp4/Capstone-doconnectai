@@ -62,7 +62,7 @@ public class UserServiceImpl implements IUserService {
 		User user = userRepo.findByEmail(email);
 
 		if (user == null)
-			return null;
+			throw new ResourceNotFoundException("User not found with email");
 
 		log.info("User found with email: {}", email);
 		return UserMapper.toDto(user);
@@ -97,7 +97,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public void deleteUser(Integer id) {
-		
+
 		log.info("Deleting user with ID: {}", id);
 
 		User user = userRepo.findById(id).orElseThrow(() -> {

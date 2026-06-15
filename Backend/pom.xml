@@ -93,6 +93,20 @@
 			<artifactId> google-genai </artifactId>
 			<version> 1.0.0 </version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId> mockito-core </artifactId>
+			<version>5.20.0</version>
+			<scope> tst </scope>
+		</dependency>
+		
+		<dependancy> 
+			<groupId>org.mockito</groupId>
+			<artifactId> mockito-junit-jupiter </artifactId>
+			<version>5.20.0</version>
+			<scope>test </scope>
+		</dependancy>
 
 		
 
