@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.doconnectai.dto.ChatMessageDto;
 import com.doconnectai.service.IChatMessageService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/messages")
 @CrossOrigin
@@ -25,7 +27,7 @@ public class ChatMessageController {
 	
 	
 	@PostMapping
-	public ChatMessageDto addMessage(@RequestBody ChatMessageDto dto) {
+	public ChatMessageDto addMessage(@Valid @RequestBody ChatMessageDto dto) {
 
 		return msgService.addMessage(dto);
 	}

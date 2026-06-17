@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.doconnectai.dto.ChatRoomDto;
 import com.doconnectai.service.IChatRoomService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/chatrooms")
 @CrossOrigin
@@ -27,7 +29,7 @@ public class ChatRoomController {
 	
 	
 	@PostMapping
-	public ChatRoomDto addRoom(@RequestBody ChatRoomDto dto) {
+	public ChatRoomDto addRoom(@Valid @RequestBody ChatRoomDto dto) {
 
 		return roomService.addRoom(dto);
 	}

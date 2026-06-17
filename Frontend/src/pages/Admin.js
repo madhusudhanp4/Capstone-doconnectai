@@ -25,10 +25,12 @@ function Admin() {
             const u = await getAllUsers();
             const q = await getAllQuestions();
             const r = await getAllRooms();
+            const a = await getAllAnswers();
 
             setUsers(u.data);
             setQuestions(q.data);
             setRooms(r.data);
+            setAnswers(a.data);
 
         } catch (err) {
             console.log(err);

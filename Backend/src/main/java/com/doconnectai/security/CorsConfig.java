@@ -6,6 +6,17 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+
+
+/**
+ * Configures Cross-Origin Resource Sharing (CORS) for the application.
+ *
+ * Allows the React frontend running on localhost:3000 to access
+ * Spring Boot REST APIs and enables credential sharing such as
+ * Authorization headers and cookies.
+ */
+
+
 @Configuration
 public class CorsConfig {
 

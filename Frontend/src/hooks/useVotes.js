@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 
 import {
     addVote,
-    getVoteCount,
     getVotesByAnswerId
 }
-from "../services/voteService";
+    from "../services/voteService";
 
 function useVotes(answerId) {
 
@@ -26,15 +25,6 @@ function useVotes(answerId) {
 
         try {
 
-            const scoreRes =
-                await getVoteCount(
-                    answerId
-                );
-
-            setScore(
-                scoreRes.data
-            );
-
             const votesRes =
                 await getVotesByAnswerId(
                     answerId
@@ -43,20 +33,26 @@ function useVotes(answerId) {
             const votes =
                 votesRes.data;
 
-            setUpVotes(
+            const up =
                 votes.filter(
                     v =>
                         v.type ===
                         "UPVOTE"
-                ).length
-            );
+                ).length;
 
-            setDownVotes(
+            const down =
                 votes.filter(
                     v =>
                         v.type ===
                         "DOWNVOTE"
-                ).length
+                ).length;
+
+            setUpVotes(up);
+
+            setDownVotes(down);
+
+            setScore(
+                up - down
             );
         }
         catch (err) {
@@ -71,51 +67,50 @@ function useVotes(answerId) {
     const handleUpVote =
         async () => {
 
-        try {
+            try {
 
-            await addVote({
-                type: "UPVOTE",
-                answerId
-            });
+                await addVote({
+                    type: "UPVOTE",
+                    answerId
+                });
 
-            loadVotes();
-        }
-        catch (err) {
+                loadVotes();
+            }
+            catch (err) {
 
-            console.log(
-                "Upvote failed:",
-                err
-            );
-        }
-    };
+                console.log(
+                    "Upvote failed:",
+                    err
+                );
+            }
+        };
 
     const handleDownVote =
         async () => {
 
-        try {
+            try {
 
-            await addVote({
-                type: "DOWNVOTE",
-                answerId
-            });
+                await addVote({
+                    type: "DOWNVOTE",
+                    answerId
+                });
 
-            loadVotes();
-        }
-        catch (err) {
+                loadVotes();
+            }
+            catch (err) {
 
-            console.log(
-                "Downvote failed:",
-                err
-            );
-        }
-    };
+                console.log(
+                    "Downvote failed:",
+                    err
+                );
+            }
+        };
 
     return {
 
         score,
         upVotes,
         downVotes,
-
         handleUpVote,
         handleDownVote
     };

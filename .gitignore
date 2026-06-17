@@ -1,0 +1,7 @@
+# Ignore generated folders
+Diagrams/
+con,ser,repo/
+
+Backend/logs/
+*.log
+*.gz

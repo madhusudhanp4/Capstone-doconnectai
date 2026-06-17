@@ -99,7 +99,7 @@ public class UserController {
 	
 	
 	
-	@PreAuthorize("hasAnyRole('ADMIN','MODERATOR')")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@GetMapping("/{id}")
 	public UserDto getUserById(@PathVariable int id) {
 		
@@ -123,9 +123,9 @@ public class UserController {
 	
 	
 
-	@PreAuthorize("hasAnyRole('USER', 'MODERATOR', 'ADMIN')")
+	@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
 	@PutMapping("/{id}")
-	public UserDto updateUser(@PathVariable Integer id, @Valid @RequestBody UserDto dto) {
+	public UserDto updateUser(@Valid @PathVariable Integer id, @Valid @RequestBody UserDto dto) {
 
 		log.info("PUT /user details updated");
 		return userService.updateUser(id, dto);

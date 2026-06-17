@@ -57,7 +57,7 @@ public class AnswerController {
 	
 
 	@PutMapping("/{id}")
-	public AnswerDto updateAnswer(@PathVariable Integer id, @Valid @RequestBody AnswerDto dto) {
+	public AnswerDto updateAnswer(@Valid  @PathVariable Integer id, @Valid @RequestBody AnswerDto dto) {
 
 		log.info("UPDATE /answer updated");
 

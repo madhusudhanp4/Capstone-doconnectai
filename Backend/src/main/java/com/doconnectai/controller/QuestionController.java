@@ -75,7 +75,7 @@ public class QuestionController {
 	
 	@PreAuthorize("hasAnyRole('ADMIN', 'MODERATOR', 'USER')")
 	@PutMapping("/{id}")
-	public QuestionDto updateQuestion( @PathVariable Integer id, @Valid @RequestBody QuestionDto dto) {
+	public QuestionDto updateQuestion(@Valid @PathVariable Integer id, @Valid @RequestBody QuestionDto dto) {
 
 		log.info("PUT /question updated");
 	    return qstnService.updateQuestion(id, dto);

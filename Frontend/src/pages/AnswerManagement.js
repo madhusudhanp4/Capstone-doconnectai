@@ -1,49 +1,55 @@
-import {useEffect,useState} from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import {
-    getAllAnswers,
-    deleteAnswer
-} from "../services/answerService";
+import { getAllAnswers, deleteAnswer } from "../services/answerService";
 import "../styles/admin.css";
+import { toast } from "react-toastify";
+import { confirmDelete, successAlert, errorAlert } from "../utils/alertService";
 
-function AnswerManagement(){
+function AnswerManagement() {
 
-    const [answers,setAnswers]=useState([]);
-    const [search,setSearch]=useState("");
+    const [answers, setAnswers] = useState([]);
+    const [search, setSearch] = useState("");
 
-    useEffect(()=>{loadAnswers();},[]);
+    useEffect(() => { loadAnswers(); }, []);
 
-    const loadAnswers=async()=>{
-        try{
-            const {data}=await getAllAnswers();
+    const loadAnswers = async () => {
+        try {
+            const { data } = await getAllAnswers();
+            console.log(data);
             setAnswers(data);
-        }catch(err){
+        } catch (err) {
             console.log(err);
         }
     };
 
-    const handleDelete=async id=>{
-        if(!window.confirm("Delete answer?")) return;
+    const handleDelete = async (id) => {
 
-        try{
+        const result = await confirmDelete();
+
+        if (!result.isConfirmed) return;
+
+        try {
             await deleteAnswer(id);
+            successAlert("Answer Deleted");
             loadAnswers();
-        }catch(err){
+        }
+        catch (err) {
             console.log(err);
+            errorAlert("Delete Failed");
         }
     };
 
-    const filtered=answers.filter(a=>
+    const filtered = answers.filter(a =>
         a.content?.toLowerCase().includes(search.toLowerCase())
     );
 
-    return(
+    return (
         <div className="dashboard-page">
-            <Navbar/>
+            <Navbar />
 
             <div className="dashboard-body">
-                <Sidebar/>
+                <Sidebar />
 
                 <div className="content">
 
@@ -53,10 +59,10 @@ function AnswerManagement(){
                         className="form-input"
                         placeholder="Search answer..."
                         value={search}
-                        onChange={e=>setSearch(e.target.value)}
+                        onChange={e => setSearch(e.target.value)}
                     />
 
-                    <br/><br/>
+                    <br /><br />
 
                     <div className="card">
 
@@ -73,7 +79,7 @@ function AnswerManagement(){
 
                             <tbody>
 
-                                {filtered.map(a=>(
+                                {filtered.map(a => (
                                     <tr key={a.id}>
 
                                         <td>{a.id}</td>
@@ -81,9 +87,9 @@ function AnswerManagement(){
 
                                         <td>
                                             {
-                                                a.content?.length>50
-                                                ?a.content.substring(0,50)+"..."
-                                                :a.content
+                                                a.content?.length > 50
+                                                    ? a.content.substring(0, 50) + "..."
+                                                    : a.content
                                             }
                                         </td>
 
@@ -91,7 +97,7 @@ function AnswerManagement(){
 
                                             <button
                                                 className="danger-btn"
-                                                onClick={()=>
+                                                onClick={() =>
                                                     handleDelete(a.id)
                                                 }
                                             >
