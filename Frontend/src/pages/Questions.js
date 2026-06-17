@@ -10,6 +10,7 @@ function Questions() {
 
     const [questions, setQuestions] = useState([]);
     const [search, setSearch] = useState("");
+    
 
     const navigate = useNavigate();
 

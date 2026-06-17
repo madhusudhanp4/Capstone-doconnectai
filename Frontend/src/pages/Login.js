@@ -10,9 +10,11 @@ function Login() {
     const [password, setPassword] = useState("");
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const handleLogin = async e => {
         e.preventDefault();
+        setLoading(true);
 
         try {
             const { data: token } =
@@ -23,23 +25,17 @@ function Login() {
 
             login(user, token);
             toast.success(`Welcome ${user.name}!`);
-            setTimeout(() => navigate("/dashboard"), 1000);
+            navigate("/dashboard");
         } catch (err) {
             console.log(err);
             toast.error("Invalid Credentials!");
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
         <div className="login-container">
-            <Toaster
-                position="top-center"
-                containerStyle={{
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)"
-                }}
-            />
 
             <div className="login-card">
                 <h1 className="logo">DoConnect AI</h1>
@@ -69,8 +65,8 @@ function Login() {
                         />
                     </div>
 
-                    <button type="submit" className="login-btn">
-                        Sign In
+                    <button type="submit" className="login-btn" disabled={loading}>
+                        {loading ? "Signing In..." : "Sign In"}
                     </button>
                 </form>
 

@@ -98,6 +98,8 @@ ul {
 
     box-shadow:
         var(--shadow);
+    
+    color: var(--text-primary);
 }
 
 .primary-btn {

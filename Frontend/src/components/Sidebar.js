@@ -11,23 +11,19 @@ function Sidebar() {
             <Link to="/dashboard">🏠 Home</Link>
             <Link to="/questions">❓ Questions</Link>
             <Link to="/ask-question">➕ Ask Question</Link>
-            <Link to="/ai">🤖 Ask AI</Link>
+            <Link to="/ai-chat">🤖 AI Chat</Link>
             <Link to="/chat">💬 Chats</Link>
-            <Link to="/notifications">🔔 Notifications</Link>
+            <Link to="#" onClick={(e) => e.preventDefault()} className="disabled-link" > 🔔 Notifications </Link>
             <Link to="/leaderboard">🏆 Leaderboard</Link>
             <Link to="/profile">👤 Profile</Link>
-            <Link to="/settings">⚙️ Settings</Link>
+            <Link to="#" onClick={(e) => e.preventDefault()} className="disable-link"> ⚙️ Settings</Link>
 
             {user?.role === "ADMIN" &&
                 <Link to="/admin">🛡️ Admin Panel</Link>
             }
 
-            <button
-                className="logout-btn"
-                onClick={logout}
-            >
-                🚪 Logout
-            </button>
+            <button className="logout-btn" onClick={logout} >🚪 Logout   </button>
+
         </aside>
     );
 }

@@ -6,11 +6,12 @@ function App() {
   return (
     <BrowserRouter>
       <Toaster
-        position="top-right"
+        position="top-center"
         toastOptions={{
-          duration: 2000,
+          duration: 3000,
           style: {
-            borderRadius: "12px"
+            borderRadius: "12px",
+            fontSize: "14px"
           }
         }}
       />

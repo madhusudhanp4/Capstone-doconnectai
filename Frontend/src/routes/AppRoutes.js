@@ -13,12 +13,13 @@ import UserManagement from "../pages/userManagement";
 import QuestionManagement from "../pages/QuestionManagement";
 import AnswerManagement from "../pages/AnswerManagement";
 import ChatRoomManagement from "../pages/ChatRoomManagement";
+import AIChat from "../pages/AIChat";
 
 function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/login" element={<Login/>}/>
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/questions" element={<Questions />} />
@@ -50,6 +51,8 @@ function AppRoutes() {
                 path="/admin/chatrooms"
                 element={<ChatRoomManagement />}
             />
+            <Route path="/ai-chat" element={<AIChat />} />
+
         </Routes>
     );
 }

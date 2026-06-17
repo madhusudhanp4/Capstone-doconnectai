@@ -68,3 +68,7 @@
     color:var(--text-primary);
     cursor:pointer;
 }
+
+.question-description {
+    color: var(--text-secondary);
+}

@@ -4,11 +4,13 @@
         var(--text-primary);
 }
 
-.question-title{
-    font-size:42px;
-    font-weight:700;
-    margin-bottom:10px;
+.question-title {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary);   /* ✅ ADD */
 }
+
 
 .question-author{
     color:
@@ -16,10 +18,11 @@
     margin-bottom:40px;
 }
 
-.question-description{
-    margin-top:15px;
-    font-size:18px;
-    line-height:1.7;
+.question-description {
+    margin-top: 15px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-primary);   /* ✅ ADD THIS */
 }
 
 .answers-section{

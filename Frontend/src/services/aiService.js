@@ -1,8 +1,5 @@
 import api from "./api";
 
-export const generateAIAnswer = (question) => {
-    return api.post(
-        "/ai/answer",
-        question
-    );
+export const generateAIAnswer = data => {
+    return api.post("/ai/generate", data);
 };
