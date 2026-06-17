@@ -1,5 +1,5 @@
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import { addQuestion } from "../services/questionService";
@@ -112,6 +112,8 @@ function AskQuestion() {
                                     Description
                                 </label>
 
+
+
                                 <textarea
                                     name="description"
                                     value={
@@ -123,8 +125,24 @@ function AskQuestion() {
                                     placeholder=
                                     "Describe your problem..."
                                 />
+                                <div className="ask-tips">
+
+                                    <h5>
+                                        Writing Tips
+                                    </h5>
+
+                                    <ul>
+                                        <li>Explain what you are trying to achieve.</li>
+                                        <li>Mention any errors or exceptions.</li>
+                                        <li>Include enough details to reproduce the problem.</li>
+
+                                    </ul>
+
+                                </div>
 
                             </div>
+
+
 
 
                             <button

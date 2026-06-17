@@ -1,32 +1,38 @@
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import "../styles/navbar.css";
 
 function Navbar() {
 
+  const { user } = useContext(AuthContext);
+
   return (
-    <div className="top-bar">
+ <header className="top-bar">
 
-      {/* ✅ App Name */}
-      <h2 className="logo-text">
-        DoConnect AI
-      </h2>
+    <div className="nav-left">
 
-      {/* ✅ Search */}
-      <input
-        className="search-box"
-        type="text"
-        placeholder="Search questions..."
-      />
+        <h2 className="logo">
+            DoConnect AI
+        </h2>
 
-      {/* ✅ Icons */}
-      <div className="nav-icons">
-
-        <span className="nav-icon">🔔</span>
-
-        <span className="nav-icon">👤</span>
-
-      </div>
+        <input
+            className="search-box"
+            placeholder="Search questions..."
+        />
 
     </div>
+
+    <div className="nav-right">
+
+        <span>🔔</span>
+
+        <span>
+            👤 {user?.name}
+        </span>
+
+    </div>
+
+</header>
   );
 }
 

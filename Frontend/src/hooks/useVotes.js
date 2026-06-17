@@ -1,62 +1,121 @@
 import { useState, useEffect } from "react";
-import { addVote, getVotesByAnswerId } from "../services/voteService";
+
+import {
+    addVote,
+    getVoteCount,
+    getVotesByAnswerId
+}
+from "../services/voteService";
 
 function useVotes(answerId) {
 
-    const [upVotes, setUpVotes] = useState(0);
-    const [downVotes, setDownVotes] = useState(0);
+    const [score, setScore] =
+        useState(0);
+
+    const [upVotes, setUpVotes] =
+        useState(0);
+
+    const [downVotes, setDownVotes] =
+        useState(0);
 
     useEffect(() => {
         loadVotes();
     }, [answerId]);
 
     const loadVotes = async () => {
+
         try {
-            const votesRes = await getVotesByAnswerId(answerId); // ✅ missing line fixed
-            const votes = votesRes.data;
 
-            const up = votes.filter(v => v.type === "UPVOTE").length;
-            const down = votes.filter(v => v.type === "DOWNVOTE").length;
+            const scoreRes =
+                await getVoteCount(
+                    answerId
+                );
 
-            setUpVotes(up);
-            setDownVotes(down);
+            setScore(
+                scoreRes.data
+            );
 
-        } catch (err) {
-            console.log("Error loading votes:", err);
+            const votesRes =
+                await getVotesByAnswerId(
+                    answerId
+                );
+
+            const votes =
+                votesRes.data;
+
+            setUpVotes(
+                votes.filter(
+                    v =>
+                        v.type ===
+                        "UPVOTE"
+                ).length
+            );
+
+            setDownVotes(
+                votes.filter(
+                    v =>
+                        v.type ===
+                        "DOWNVOTE"
+                ).length
+            );
+        }
+        catch (err) {
+
+            console.log(
+                "Error loading votes:",
+                err
+            );
         }
     };
 
-    const handleUpVote = async () => {
+    const handleUpVote =
+        async () => {
+
         try {
+
             await addVote({
                 type: "UPVOTE",
                 answerId
             });
 
-            await loadVotes(); // ✅ ensure refresh
+            loadVotes();
+        }
+        catch (err) {
 
-        } catch (err) {
-            console.log("Upvote failed:", err);
+            console.log(
+                "Upvote failed:",
+                err
+            );
         }
     };
 
-    const handleDownVote = async () => {
+    const handleDownVote =
+        async () => {
+
         try {
+
             await addVote({
                 type: "DOWNVOTE",
                 answerId
             });
 
-            await loadVotes(); // ✅ ensure refresh
+            loadVotes();
+        }
+        catch (err) {
 
-        } catch (err) {
-            console.log("Downvote failed:", err);
+            console.log(
+                "Downvote failed:",
+                err
+            );
         }
     };
 
     return {
+
+        score,
         upVotes,
         downVotes,
+
         handleUpVote,
         handleDownVote
     };

@@ -87,3 +87,53 @@
     margin-top:20px;
     width:250px;
 }
+
+.delete-btn{
+    padding:12px 20px;
+    border:none;
+    border-radius:12px;
+    background:#dc2626;
+    color:white;
+    cursor:pointer;
+    margin-bottom:25px;
+}
+
+.question-meta{
+    display:flex;
+    gap:30px;
+    margin:20px 0;
+    color:var(--text-secondary);
+}
+
+.question-actions{
+    display:flex;
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.danger-btn{
+    padding:12px 22px;
+    border:none;
+    border-radius:12px;
+    background:#dc2626;
+    color:#fff;
+    cursor:pointer;
+}
+
+.answer-box{
+    margin-top:40px;
+}
+
+.secondary-btn{
+    padding:12px 22px;
+    border:none;
+    border-radius:12px;
+    background:var(--card-bg);
+    color:var(--text-primary);
+    cursor:pointer;
+    border:1px solid var(--border);
+}
+
+.secondary-btn:hover{
+    border-color:var(--primary);
+}

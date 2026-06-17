@@ -1,20 +1,26 @@
-import ReactMarkdown from "react-markdown";
-
-function AIAnswerCard({ answer }) {
+function AIAnswerCard({answer}) {
 
     return (
 
         <div className="card ai-card">
 
-            <h4 className="text-primary">
+            <h4>
                 🤖 DoConnect AI
             </h4>
 
-            <div className="answer-content">
+            <p className="ai-answer-text">
+                {answer}
+            </p>
 
-                <ReactMarkdown>
-                    {answer}
-                </ReactMarkdown>
+            <div className="ai-feedback">
+
+                <button>
+                    👍 Helpful
+                </button>
+
+                <button>
+                    👎 Not Helpful
+                </button>
 
             </div>
 

@@ -1,56 +1,34 @@
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import "../styles/sidebar.css";
-import { useNavigate, useLocation } from "react-router-dom";
 
 function Sidebar() {
-
-    const navigate = useNavigate();
-    const location = useLocation(); // ✅ to detect active page
+    const { user, logout } = useContext(AuthContext);
 
     return (
+        <aside className="sidebar">
+            <Link to="/dashboard">🏠 Home</Link>
+            <Link to="/questions">❓ Questions</Link>
+            <Link to="/ask-question">➕ Ask Question</Link>
+            <Link to="/ai">🤖 Ask AI</Link>
+            <Link to="/chat">💬 Chats</Link>
+            <Link to="/notifications">🔔 Notifications</Link>
+            <Link to="/leaderboard">🏆 Leaderboard</Link>
+            <Link to="/profile">👤 Profile</Link>
+            <Link to="/settings">⚙️ Settings</Link>
 
-        <div className="sidebar">
+            {user?.role === "ADMIN" &&
+                <Link to="/admin">🛡️ Admin Panel</Link>
+            }
 
-            <p
-                className={`sidebar-item ${location.pathname === "/dashboard" ? "active" : ""}`}
-                onClick={() => navigate("/dashboard")}
-            >
-                🏠 Dashboard
-            </p>
-
-            <p
-                className={`sidebar-item ${location.pathname === "/questions" ? "active" : ""}`}
-                onClick={() => navigate("/questions")}
-            >
-                ❓ Questions
-            </p>
-
-            <p
-                className={`sidebar-item ${location.pathname === "/ask-question" ? "active" : ""}`}
-                onClick={() => navigate("/ask-question")}
-            >
-                ➕ Ask Question
-            </p>
-
-            <p className="sidebar-item">
-                💬 Chat
-            </p>
-
-            <p className="sidebar-item">
-                👤 Profile
-            </p>
-
-            <p className="sidebar-item">
-                ⚙️ Admin
-            </p>
-
-            <p
-                className="sidebar-item"
-                onClick={() => navigate("/")}
+            <button
+                className="logout-btn"
+                onClick={logout}
             >
                 🚪 Logout
-            </p>
-
-        </div>
+            </button>
+        </aside>
     );
 }
 
