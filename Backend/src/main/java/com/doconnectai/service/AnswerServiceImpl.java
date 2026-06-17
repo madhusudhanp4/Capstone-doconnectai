@@ -126,5 +126,16 @@ public class AnswerServiceImpl implements IAnswerService {
 
 		return AnswerMapper.toDto(answer);
 	}
+	
+	@Override
+	public List<AnswerDto> getAllAnswers() {
+
+	    List<Answer> answers =
+	            answerRepo.findAll();
+
+	    return answers.stream()
+	            .map(AnswerMapper::toDto)
+	            .toList();
+	}
 
 }

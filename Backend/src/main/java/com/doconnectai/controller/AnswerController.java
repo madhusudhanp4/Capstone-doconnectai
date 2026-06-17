@@ -24,47 +24,47 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/answers")
 @CrossOrigin
 public class AnswerController {
-	
+
 	@Autowired
 	private IAnswerService ansService;
-	
+
 	@PostMapping
 	public AnswerDto addans(@Valid @RequestBody AnswerDto dto) {
 		log.info("POST /answer added");
 		return ansService.addAnswer(dto);
 	}
-	
+
 	@GetMapping("/question/{questionId}")
-	public List<AnswerDto> getAnswersByQuestionId(@PathVariable int questionId){
+	public List<AnswerDto> getAnswersByQuestionId(@PathVariable int questionId) {
 		log.info("GET /answer called by question id");
 		return ansService.getAnswerByQuestionId(questionId);
 	}
-	
 
 	@PutMapping("/{id}")
-	public AnswerDto updateAnswer( @PathVariable Integer id, @Valid @RequestBody AnswerDto dto) {
+	public AnswerDto updateAnswer(@PathVariable Integer id, @Valid @RequestBody AnswerDto dto) {
 
 		log.info("UPDATE /answer updated");
-		
-	    return ansService.updateAnswer(
-	            id,
-	            dto);
+
+		return ansService.updateAnswer(id, dto);
 	}
-	
-	
+
 	@DeleteMapping("/{id}")
-	public String deleteAnswer( @PathVariable Integer id) {
+	public String deleteAnswer(@PathVariable Integer id) {
 
 		log.info("DELETE /answer deleted");
-		
-	    ansService.deleteAnswer(id);
 
-	    return "Answer deleted successfully";
+		ansService.deleteAnswer(id);
+
+		return "Answer deleted successfully";
 	}
-	
-	
+
 	@PutMapping("/{id}/accept")
 	public AnswerDto acceptAnswer(@PathVariable Integer id) {
-	    return ansService.acceptAnswer(id);
+		return ansService.acceptAnswer(id);
+	}
+
+	@GetMapping
+	public List<AnswerDto> getAllAnswers() {
+		return ansService.getAllAnswers();
 	}
 }

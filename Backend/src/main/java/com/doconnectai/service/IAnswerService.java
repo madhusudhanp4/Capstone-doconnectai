@@ -16,4 +16,6 @@ public interface IAnswerService {
     
     AnswerDto acceptAnswer(Integer answerId);
     
+    List<AnswerDto> getAllAnswers();
+    
 }

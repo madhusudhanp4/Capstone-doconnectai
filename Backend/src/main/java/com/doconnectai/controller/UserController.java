@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,7 +44,7 @@ public class UserController {
 	private UserServiceImpl userService;
 
 	@PostMapping("/login")
-	public String login(@Valid @RequestBody UserDto dto) {
+	public String login(@RequestBody UserDto dto) {
 
 		User user = userRepo.findByEmail(dto.getEmail());
 
@@ -105,6 +106,14 @@ public class UserController {
 		return "User deleted successfully";
 	}
 	
+	
+	@GetMapping("/me")
+	public UserDto getCurrentUser(Authentication authentication) {
+
+	    String email = authentication.getName();
+
+	    return userService.getUserByEmail(email);
+	}
 	
 
 }
