@@ -15,6 +15,10 @@ public class ChatRoomServiceImpl implements IChatRoomService {
 	@Autowired
 	private ChatRoomRepo roomRepo;
 
+	
+	//----------------------------------- ADD CHAT ROOM ------------------------------------------//
+	
+	
 	@Override
 	public ChatRoomDto addRoom(ChatRoomDto dto) {
 
@@ -28,6 +32,11 @@ public class ChatRoomServiceImpl implements IChatRoomService {
 
 		return new ChatRoomDto(room.getId(), room.getName(), room.getDescription());
 	}
+	
+	
+	//------------------------------------- GET ALL CHAT ROOMS --------------------------------------------//
+	
+	
 
 	@Override
 	public List<ChatRoomDto> getAllRooms() {
@@ -35,6 +44,9 @@ public class ChatRoomServiceImpl implements IChatRoomService {
 		return roomRepo.findAll().stream().map(r -> new ChatRoomDto(r.getId(), r.getName(), r.getDescription()))
 				.toList();
 	}
+	
+	
+	//------------------------------------------ GET ROOM BY ID --------------------------------------------//
 
 	@Override
 	public ChatRoomDto getRoomById(Integer id) {
@@ -44,6 +56,10 @@ public class ChatRoomServiceImpl implements IChatRoomService {
 		return new ChatRoomDto(room.getId(), room.getName(), room.getDescription());
 	}
 
+	
+	//------------------------------------------ DELETE ROOM ----------------------------------------------//
+	
+	
 	@Override
 	public void deleteRoom(Integer id) {
 

@@ -27,6 +27,10 @@ public class CommentController {
 	@Autowired
 	private ICommentService cmntService;
 
+	
+	
+	
+	
 	@PostMapping
 	public CommentDto addCmt(@Valid @RequestBody CommentDto dto) {
 
@@ -34,6 +38,9 @@ public class CommentController {
 		return cmntService.addComment(dto);
 	}
 
+	
+	
+	
 	@GetMapping("/answer/{answerId}")
 	public List<CommentDto> getCommentsByAnswerId(@PathVariable Integer answerId) {
 		
@@ -41,6 +48,9 @@ public class CommentController {
 		return cmntService.getCommentsByAnswer_Id(answerId);
 	}
 
+	
+	
+	
 	@DeleteMapping("/{id}")
 	public String deleteComment(@PathVariable Integer id) {
 		log.info("DELETE /comment deleted");
@@ -48,5 +58,8 @@ public class CommentController {
 
 		return "Comment deleted successfully";
 	}
+	
+	
+	
 
 }

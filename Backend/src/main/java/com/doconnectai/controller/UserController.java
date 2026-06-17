@@ -42,7 +42,20 @@ public class UserController {
 
 	@Autowired
 	private UserServiceImpl userService;
-
+	
+	
+	
+	/**
+	 * JSON Body - login 
+	 * 
+	 * {	
+	 * 		 "email": "*******", 
+	 * 		"password": "*****" 
+	 * }
+	 * 
+	 */
+	
+	
 	@PostMapping("/login")
 	public String login(@RequestBody UserDto dto) {
 
@@ -61,7 +74,21 @@ public class UserController {
 		log.info("POST /login successful");
 		return jwtUtil.generateToken(user.getEmail(), user.getRole().name());
 	}
-
+	
+	
+	
+	
+	
+	/**
+	 * JSON body Register 
+	 * {
+	 * 		"name": ****,
+	 * 		"email": *****,
+	 * 		"password": ******
+	 * }
+	 */
+	
+	
 	@PostMapping("/register")
 	public UserDto registerUser(@Valid @RequestBody UserDto userDTO) {
 
@@ -69,7 +96,9 @@ public class UserController {
 		return userService.registerUser(userDTO);
 
 	}
-
+	
+	
+	
 	@PreAuthorize("hasAnyRole('ADMIN','MODERATOR')")
 	@GetMapping("/{id}")
 	public UserDto getUserById(@PathVariable int id) {
@@ -79,6 +108,9 @@ public class UserController {
 		return userService.getUserById(id);
 
 	}
+	
+	
+	
 
 	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/all")
@@ -86,6 +118,10 @@ public class UserController {
 		log.info("GET /listed all users");
 		return userService.getAllUsers();
 	}
+	
+	
+	
+	
 
 	@PreAuthorize("hasAnyRole('USER', 'MODERATOR', 'ADMIN')")
 	@PutMapping("/{id}")
@@ -94,6 +130,9 @@ public class UserController {
 		log.info("PUT /user details updated");
 		return userService.updateUser(id, dto);
 	}
+	
+	
+	
 
 	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/{id}")
@@ -105,6 +144,9 @@ public class UserController {
 
 		return "User deleted successfully";
 	}
+	
+	
+	
 	
 	
 	@GetMapping("/me")

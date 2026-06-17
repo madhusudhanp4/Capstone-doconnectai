@@ -19,8 +19,19 @@ import com.doconnectai.repository.UserRepo;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Project : DocConnectAI 
+ * Author : Panuganti Madhusudan 
+ * Created Date : 12 June
+ * 2026 Description : Handles business logic for answer operations (add, update,
+ * delete, accept).
+ *
+ * Design Patterns: - Service Layer Pattern - DTO Pattern
+ */
+
 @Slf4j
 @Service
+
 public class AnswerServiceImpl implements IAnswerService {
 
 	@Autowired
@@ -31,6 +42,9 @@ public class AnswerServiceImpl implements IAnswerService {
 
 	@Autowired
 	private QuestionRepo qstnRepo;
+	
+	//-------------------------------- ADD ANSWER -------------------------------------------------------//
+	
 
 	@Override
 	public AnswerDto addAnswer(AnswerDto dto) {
@@ -57,6 +71,12 @@ public class AnswerServiceImpl implements IAnswerService {
 
 		return AnswerMapper.toDto(saved);
 	}
+	
+	
+	
+	//------------------------------------- GET ANSWER BY QUESTION ID ----------------------------------//
+	
+	
 
 	@Override
 	public List<AnswerDto> getAnswerByQuestionId(Integer questionId) {
@@ -66,6 +86,12 @@ public class AnswerServiceImpl implements IAnswerService {
 		return ans.stream().map(AnswerMapper::toDto).collect(Collectors.toList());
 	}
 
+	
+	
+	
+	//----------------------------------- UPDATE ANSWER --------------------------------------------------//
+	
+	
 	@Override
 	public AnswerDto updateAnswer(Integer id, AnswerDto dto) {
 
@@ -83,6 +109,10 @@ public class AnswerServiceImpl implements IAnswerService {
 		return AnswerMapper.toDto(updated);
 	}
 
+	
+	//------------------------------------- DELETE ANSWER ------------------------------------------------//
+	
+	
 	@Override
 	public void deleteAnswer(Integer id) {
 
@@ -98,14 +128,18 @@ public class AnswerServiceImpl implements IAnswerService {
 		answerRepo.deleteById(id);
 	}
 
+	
+	// --------------------------------- ACCEPT ANSWER ----------------------------------------------------//
+	
+	
 	@Override
 	public AnswerDto acceptAnswer(Integer answerId) {
 
 		String email = SecurityContextHolder.getContext().getAuthentication().getName();
 
 		User currentUser = userRepo.findOptionalByEmail(email)
-		        .orElseThrow(() -> new RuntimeException("User not found"));
-		
+				.orElseThrow(() -> new RuntimeException("User not found"));
+
 		Answer answer = answerRepo.findById(answerId).orElseThrow(() -> new RuntimeException("Answer not found"));
 
 		Question question = answer.getQuestion();
@@ -127,15 +161,18 @@ public class AnswerServiceImpl implements IAnswerService {
 		return AnswerMapper.toDto(answer);
 	}
 	
+	//----------------------------------------- GET ALL ANSWERS ---------------------------------------------//
+	
+	
+
 	@Override
 	public List<AnswerDto> getAllAnswers() {
 
-	    List<Answer> answers =
-	            answerRepo.findAll();
+		List<Answer> answers = answerRepo.findAll();
 
-	    return answers.stream()
-	            .map(AnswerMapper::toDto)
-	            .toList();
+		return answers.stream().map(AnswerMapper::toDto).toList();
 	}
 
+	
+	
 }

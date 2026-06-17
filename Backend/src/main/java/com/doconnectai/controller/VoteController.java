@@ -28,6 +28,8 @@ public class VoteController {
 
 	@Autowired
 	private IVoteService vService;
+	
+	
 
 	@PostMapping
 	public VoteDto addVote(@Valid @RequestBody VoteDto dto) {
@@ -36,6 +38,8 @@ public class VoteController {
 
 		return vService.addVote(dto);
 	}
+	
+	
 
 	@DeleteMapping("/answer/{answerId}")
 	public String removeVote(@PathVariable Integer answerId) {
@@ -47,6 +51,8 @@ public class VoteController {
 		return "Vote removed successfully";
 	}
 
+	
+	
 	
 	@GetMapping("/answer/{answerId}")
 	public List<VoteDto> getVotesByAnswerId(@PathVariable Integer answerId) {

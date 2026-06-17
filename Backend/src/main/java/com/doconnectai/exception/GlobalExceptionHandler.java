@@ -10,11 +10,28 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import lombok.extern.slf4j.Slf4j;
+	
+	
+	
+	/**
+	 * Global exception handler for handling all application-wide exceptions.
+	 * Ensures consistent error responses and centralized logging.
+	 */
+	
 
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+	
+	
+	/**
+	 * 	Handles ResourceNotFoundException.
+	 * 	Triggered when a requested resource is not found.
+	 * 	Returns HTTP 404 response with error message.
+	 */
+	
+		
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<String> handleResourceNotFoundException(ResourceNotFoundException e) {
 
@@ -22,6 +39,15 @@ public class GlobalExceptionHandler {
 
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
 	}
+	
+		
+
+	/**
+	 * Handles validation errors.
+	 * Triggered when @Valid request body validation fails.
+	 * Collects field-wise errors and returns HTTP 400 response.
+	 */
+
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<Map<String, String>> handleValidation(MethodArgumentNotValidException ex) {
@@ -35,6 +61,15 @@ public class GlobalExceptionHandler {
 
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
 	}
+
+	
+	
+	
+	/**
+	 * Handles all unhandled exceptions.
+	 * Acts as a fallback for unexpected errors.
+	 * Returns generic HTTP 500 response without exposing internal details.
+	 */
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<String> handleException(Exception e) {

@@ -22,15 +22,22 @@ public class ChatMessageController {
 	@Autowired
 	private IChatMessageService msgService;
 
+	
+	
 	@PostMapping
 	public ChatMessageDto addMessage(@RequestBody ChatMessageDto dto) {
 
 		return msgService.addMessage(dto);
 	}
 
+	
+	
 	@GetMapping("/room/{roomId}")
 	public List<ChatMessageDto> getMessagesByRoom(@PathVariable Integer roomId) {
 
 		return msgService.getMessagesByRoom(roomId);
 	}
+
+
+
 }

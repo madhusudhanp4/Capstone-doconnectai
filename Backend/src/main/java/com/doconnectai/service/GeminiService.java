@@ -19,6 +19,8 @@ public class GeminiService {
 	private String apiKey;
 
 	private final RestTemplate restTemplate = new RestTemplate();
+	
+	
 
 	public String generateAnswer(QuestionDto dto) throws Exception {
 

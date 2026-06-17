@@ -8,19 +8,10 @@ function CommentSection({
     answerId
 }) {
 
-    const {
+    const { comments, commentText, setCommentText, handleAddComment } = useComments(answerId);
 
-        comments,
 
-        commentText,
-
-        setCommentText,
-
-        handleAddComment
-
-    } =
-    useComments(answerId);
-
+    
     return (
 
         <>

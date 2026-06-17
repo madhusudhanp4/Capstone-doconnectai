@@ -28,10 +28,6 @@ public class AiController {
 	
 	
 	
-	
-	
-	
-	
 	/*
 	 * @Autowired private GeminiService geminiService;
 	 * 

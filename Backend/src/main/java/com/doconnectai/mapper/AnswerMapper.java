@@ -7,6 +7,13 @@ import com.doconnectai.entity.User;
 
 public class AnswerMapper {
 	
+	
+	
+	/*
+	 *  DTO to Entity
+	 */
+	
+	
 	public static Answer toEntity(AnswerDto dto, User user, Question qstn) {
 		
 		Answer answr = new Answer();
@@ -18,6 +25,12 @@ public class AnswerMapper {
 		
 		return answr;
 	}
+	
+	
+	/*
+	 *  Entity to DTO
+	 */
+	
 	
 	public static AnswerDto toDto(Answer answr) {
 		

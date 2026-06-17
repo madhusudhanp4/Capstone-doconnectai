@@ -27,6 +27,12 @@ public class QuestionServiceImpl implements IQuestionService {
 	@Autowired
 	private UserRepo userRepo;
 
+	
+	
+	
+	// -----------------  ADD QUESTION -------------------------- // 
+	
+	
 	@Override
 	public QuestionDto addQuestion(QuestionDto question) {
 
@@ -50,6 +56,10 @@ public class QuestionServiceImpl implements IQuestionService {
 
 		return QuestionMapper.toDto(saved);
 	}
+	
+	
+	// ---------------------------- GET ALL QUESTIONS ---------------------------------//
+	
 
 	@Override
 	public List<QuestionDto> getAllQuestion() {
@@ -60,6 +70,13 @@ public class QuestionServiceImpl implements IQuestionService {
 
 		return questions.stream().map(QuestionMapper::toDto).collect(Collectors.toList());
 	}
+	
+	
+	
+			
+	// ---------------------------- GET QUESTION BY ID ------------------------------------------//
+	
+	
 
 	@Override
 	public QuestionDto getQuestionById(Integer id) {
@@ -76,6 +93,11 @@ public class QuestionServiceImpl implements IQuestionService {
 		return QuestionMapper.toDto(question);
 	}
 
+	
+	
+	// -------------------------------UPDATE QUESTION -----------------------------------------// 
+	
+	
 	@Override
 	public QuestionDto updateQuestion(Integer id, QuestionDto dto) {
 
@@ -96,6 +118,12 @@ public class QuestionServiceImpl implements IQuestionService {
 		return QuestionMapper.toDto(updated);
 	}
 
+	
+	
+	
+	
+	// ---------------------------- DELETE QUESTION ------------------------------//
+	
 	@Override
 	public void deleteQuestion(Integer id) {
 		

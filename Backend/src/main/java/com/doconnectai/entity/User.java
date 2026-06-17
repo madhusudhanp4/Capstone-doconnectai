@@ -16,6 +16,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+/**
+ * Project      : DocConnectAI
+ * Author       : Panuganti Madhusudan
+ * Created Date : 12 June 2026
+ * Description  : Represents user data and role-based access in the system.
+ *
+ * Design Patterns:
+ * - Entity Pattern
+ * - ORM (JPA Mapping)
+ */
+
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -40,10 +53,11 @@ public class User {
 	
 	private LocalDateTime createdAt = LocalDateTime.now();
 	
+	
+	
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private Role role;
 	
-	//private String token;
 
 }

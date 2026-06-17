@@ -32,6 +32,10 @@ public class CommentServiceImpl implements ICommentService {
 	@Autowired
 	private AnswerRepo ansRepo;
 
+	
+	// -------------------------- ADD COMMENT ---------------------------------------------//
+	
+	
 	@Override
 	public CommentDto addComment(CommentDto dto) {
 
@@ -64,6 +68,11 @@ public class CommentServiceImpl implements ICommentService {
 		return CommentMapper.toDto(saved);
 	}
 
+	
+	
+	// ---------------------------- GET COMMENTS BY ANSWER BY ID --------------------------//
+	
+	
 	@Override
 	public List<CommentDto> getCommentsByAnswer_Id(Integer answerId) {
 
@@ -72,6 +81,10 @@ public class CommentServiceImpl implements ICommentService {
 		return cmts.stream().map(CommentMapper::toDto).collect(Collectors.toList());
 	}
 
+	
+	//----------------------------------- DELETE COMMENT -----------------------------------------------//
+	
+	
 	@Override
 	public void deleteComment(Integer id) {
 		

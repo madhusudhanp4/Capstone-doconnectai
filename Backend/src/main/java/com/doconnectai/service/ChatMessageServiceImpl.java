@@ -25,6 +25,9 @@ public class ChatMessageServiceImpl implements IChatMessageService {
 
 	@Autowired
 	private UserRepo userRepo;
+	
+	
+	//--------------------------------------- ADD MESSAGES IN CHAT -----------------------------------------//
 
 	@Override
 	public ChatMessageDto addMessage(ChatMessageDto dto) {
@@ -47,6 +50,11 @@ public class ChatMessageServiceImpl implements IChatMessageService {
 
 		return new ChatMessageDto(msg.getId(), msg.getMessage(), room.getId(), user.getName(), msg.getCreatedAt());
 	}
+	
+	
+	
+	//------------------------------------------- GET MESSAGES BY ROOMID -----------------------------------------//
+	
 
 	@Override
 	public List<ChatMessageDto> getMessagesByRoom(Integer roomId) {

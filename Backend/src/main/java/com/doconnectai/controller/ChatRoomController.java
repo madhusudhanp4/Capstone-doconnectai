@@ -23,17 +23,26 @@ public class ChatRoomController {
 	@Autowired
 	private IChatRoomService roomService;
 
+	
+	
+	
 	@PostMapping
 	public ChatRoomDto addRoom(@RequestBody ChatRoomDto dto) {
 
 		return roomService.addRoom(dto);
 	}
 
+	
+	
+	
 	@GetMapping
 	public List<ChatRoomDto> getAllRooms() {
 
 		return roomService.getAllRooms();
 	}
+	
+	
+	
 
 	@GetMapping("/{id}")
 	public ChatRoomDto getRoomById(@PathVariable Integer id) {
@@ -41,9 +50,14 @@ public class ChatRoomController {
 		return roomService.getRoomById(id);
 	}
 
+	
+	
+	
 	@DeleteMapping("/{id}")
 	public void deleteRoom(@PathVariable Integer id) {
 
 		roomService.deleteRoom(id);
 	}
+	
+	
 }

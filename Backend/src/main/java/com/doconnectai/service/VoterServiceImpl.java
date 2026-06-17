@@ -34,6 +34,11 @@ public class VoterServiceImpl implements IVoteService {
 	@Autowired
 	private AnswerRepo ansRepo;
 
+	
+	
+	//---------------------------------------- ADD VOTE ---------------------------------------------------//
+	
+	
 	@Override
 	public VoteDto addVote(VoteDto dto) {
 
@@ -93,6 +98,12 @@ public class VoterServiceImpl implements IVoteService {
 
 		return VoteMapper.toDto(updated);
 	}
+	
+	
+	
+	// --------------------------------------- REMOVE VOTE -----------------------------------------------//
+	
+	
 
 	@Override
 	public void removeVote(Integer answerId) {
@@ -120,6 +131,11 @@ public class VoterServiceImpl implements IVoteService {
 
 		log.info("Vote removed successfully. AnswerId={}, NewCount={}", answer.getId(), answer.getVoteCount());
 	}
+	
+	
+	
+	//---------------------------------- GET VOTES BY ANSWER ID -----------------------------------------//
+	
 
 	@Override
 	public List<VoteDto> getVotesByAnswerId(Integer answerId) {

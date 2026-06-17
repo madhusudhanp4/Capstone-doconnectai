@@ -15,6 +15,21 @@ import com.doconnectai.repository.UserRepo;
 
 import lombok.extern.slf4j.Slf4j;
 
+
+
+/**
+ * Project      : DocConnectAI
+ * Author       : Panuganti Madhusudan
+ * Created Date : 12 June 2026
+ * Description  : Handles business logic for user operations such as registration and management.
+ *
+ * Design Patterns:
+ * - Service Layer Pattern
+ * - DTO Pattern
+ */
+
+
+
 @Slf4j
 @Service
 public class UserServiceImpl implements IUserService {
@@ -24,6 +39,11 @@ public class UserServiceImpl implements IUserService {
 
 	@Autowired
 	private BCryptPasswordEncoder pswrdEncoder;
+
+	
+	
+	
+ // -------------  REGISTER NEW USER --------------------//
 
 	@Override
 	public UserDto registerUser(UserDto userDto) {
@@ -42,7 +62,12 @@ public class UserServiceImpl implements IUserService {
 
 		return UserMapper.toDto(savedUser);
 	}
+	
+	
+	
 
+	// ------------------- GET USER BY ID ----------------//
+		
 	@Override
 	public UserDto getUserById(int id) {
 		log.info("Fetching user with ID: {}", id);
@@ -54,6 +79,10 @@ public class UserServiceImpl implements IUserService {
 
 		return UserMapper.toDto(user);
 	}
+	
+	
+	
+	// -------------------- GET USER BY EMAIL -------------------//
 
 	@Override
 	public UserDto getUserByEmail(String email) {
@@ -67,6 +96,11 @@ public class UserServiceImpl implements IUserService {
 		log.info("User found with email: {}", email);
 		return UserMapper.toDto(user);
 	}
+	
+	
+	
+	
+	// -------------------------- UPDATE USER ----------------------------//
 
 	@Override
 	public UserDto updateUser(Integer id, UserDto dto) {
@@ -86,7 +120,11 @@ public class UserServiceImpl implements IUserService {
 
 		return UserMapper.toDto(updated);
 	}
+	
+	
+	// --------------------------GET ALL USERS --------------------//
 
+	
 	@Override
 	public List<UserDto> getAllUsers() {
 
@@ -95,6 +133,12 @@ public class UserServiceImpl implements IUserService {
 		return users.stream().map(UserMapper::toDto).toList();
 	}
 
+	
+	
+	
+	// -------------------------- DELETE USER ------------------------------------// 
+	
+	
 	@Override
 	public void deleteUser(Integer id) {
 

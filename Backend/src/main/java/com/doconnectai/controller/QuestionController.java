@@ -29,6 +29,15 @@ public class QuestionController {
 	@Autowired
 	private IQuestionService qstnService;
 	
+	
+	/*
+	 * { 
+	 * 		"title": ****, 
+	 * 		"description": ******
+	 *  }
+	 * 
+	 */
+	
 	@PreAuthorize("hasAnyRole('ADMIN', 'MODERATOR', 'USER')")
 	@PostMapping
 	public QuestionDto addQuestion(@Valid @RequestBody QuestionDto dto) {
@@ -37,12 +46,20 @@ public class QuestionController {
 		return qstnService.addQuestion(dto);
 	}
 	
+	
+	
+	
+	
 	@GetMapping
 	public List<QuestionDto> getAllQuestions(){
 		
 		log.info("GET /listed all questions");
 		return qstnService.getAllQuestion();
 	}
+	
+	
+	
+	
 	
 	@PreAuthorize("hasAnyRole('ADMIN', 'MODERATOR', 'USER')")
 	@GetMapping("/{id}")
@@ -52,6 +69,10 @@ public class QuestionController {
 		return qstnService.getQuestionById(id);
 	}
 	
+	
+	
+	
+	
 	@PreAuthorize("hasAnyRole('ADMIN', 'MODERATOR', 'USER')")
 	@PutMapping("/{id}")
 	public QuestionDto updateQuestion( @PathVariable Integer id, @Valid @RequestBody QuestionDto dto) {
@@ -59,6 +80,10 @@ public class QuestionController {
 		log.info("PUT /question updated");
 	    return qstnService.updateQuestion(id, dto);
 	}
+	
+	
+	
+	
 	
 	@PreAuthorize("hasAnyRole('ADMIN', 'MODERATOR', 'USER')")
 	@DeleteMapping("/{id}")
@@ -70,4 +95,8 @@ public class QuestionController {
 	    return "Question deleted successfully";
 	}
 
+	
+	
+	
+	
 }

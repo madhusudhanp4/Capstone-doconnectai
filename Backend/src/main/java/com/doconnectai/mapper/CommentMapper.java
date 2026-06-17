@@ -8,6 +8,8 @@ import com.doconnectai.entity.User;
 
 public class CommentMapper {
 
+	
+	
 	public static Comment toEntity(CommentDto dto, User user, Answer ans) {
 
 		Comment cmt = new Comment();
@@ -18,6 +20,8 @@ public class CommentMapper {
 
 		return cmt;
 	}
+	
+	
 
 	public static CommentDto toDto(Comment cmt) {
 
