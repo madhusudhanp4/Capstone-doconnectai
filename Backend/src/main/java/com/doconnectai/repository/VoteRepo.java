@@ -12,4 +12,7 @@ public interface VoteRepo extends JpaRepository<Vote, Integer> {
 	List<Vote> findByAnswer_Id(int answerId);
 
 	Optional<Vote> findByUser_IdAndAnswer_Id(Integer userId, Integer answerId);
+	
+	void deleteByAnswer_Id(Integer answerId);
+	long countByAnswer_Id(Integer answerId);
 }

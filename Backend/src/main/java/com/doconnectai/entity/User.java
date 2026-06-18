@@ -1,7 +1,9 @@
 package com.doconnectai.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,6 +11,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -59,5 +62,19 @@ public class User {
 	@Column(nullable = false)
 	private Role role;
 	
+	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<Question> questions;
 
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<Answer> answers;
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<Vote> votes;
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<Comment> comments;
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<ChatMessage> messages;
 }
