@@ -4,36 +4,36 @@ import "../styles/navbar.css";
 
 function Navbar() {
 
-  const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
-  return (
- <header className="top-bar">
+    return (
+        <header className="top-bar">
 
-    <div className="nav-left">
+            <div className="nav-left">
 
-        <h2 className="logo">
-            DoConnect AI
-        </h2>
+                <h2 className="logo">
+                    DoConnect AI
+                </h2>
 
-        <input
-            className="search-box"
-            placeholder="Search questions..."
-        />
+                <input
+                    className="search-box"
+                    placeholder="Search questions..."
+                />
 
-    </div>
+            </div>
 
-    <div className="nav-right">
+            <div className="nav-right">
 
-        <span>🔔</span>
+                <span>🔔</span>
 
-        <span>
-            👤 {user?.name}
-        </span>
+                <span>
+                    👤 {user?.name}
+                </span>
 
-    </div>
+            </div>
 
-</header>
-  );
+        </header>
+    );
 }
 
 export default Navbar;

@@ -1,10 +1,8 @@
 import VoteButtons from "./VoteButtons";
 import useVotes from "../../hooks/useVotes";
 
-function VoteSection({
-    answerId
-}) {
-
+function VoteSection({ answerId }) 
+{
     const {
         score,
         upVotes,
@@ -12,6 +10,7 @@ function VoteSection({
         handleUpVote,
         handleDownVote
     } =
+    
     useVotes(answerId);
 
     return (
