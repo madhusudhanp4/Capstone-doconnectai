@@ -99,8 +99,8 @@ function Questions() {
                                 id={q.id}
                                 title={q.title}
                                 author={q.userName}
-                                answers="0"
-                                votes="0"
+                                answers= {q.answersCount}
+                                votes= {q.voteCount}
                             />
 
                         ))
