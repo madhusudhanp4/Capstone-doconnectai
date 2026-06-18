@@ -38,8 +38,12 @@ class UserServiceImplTest {
     private UserServiceImpl userService;
 
     private User user;
+    
     private UserDto userDto;
 
+    
+    
+    
     @BeforeEach
     void setUp() {
         user = new User();
@@ -54,6 +58,8 @@ class UserServiceImplTest {
         userDto.setEmail("madhu@gmail.com");
         userDto.setPassword("raw123");
     }
+    
+    
     
     
     
@@ -90,6 +96,9 @@ class UserServiceImplTest {
 
     
     
+    
+    
+    
     @Test
     void testGetUserById_NotFound() {
 
@@ -99,6 +108,8 @@ class UserServiceImplTest {
             userService.getUserById(2);
         });
     }
+    
+    
     
     
     

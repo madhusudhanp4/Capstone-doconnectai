@@ -1,0 +1,27 @@
+@startuml
+title Send Chat Message Sequence Diagram
+
+actor User
+
+participant ChatMessageController
+participant IChatMessageService
+participant ChatMessageServiceImpl
+participant UserRepo
+participant ChatRoomRepo
+participant ChatMessageRepo
+database Database
+
+User -> ChatMessageController : Send Message
+ChatMessageController -> IChatMessageService : saveMessage(dto)
+IChatMessageService -> ChatMessageServiceImpl : saveMessage(dto)
+
+ChatMessageServiceImpl -> UserRepo : findById(userId)
+ChatMessageServiceImpl -> ChatRoomRepo : findById(roomId)
+
+ChatMessageServiceImpl -> ChatMessageRepo : save(message)
+ChatMessageRepo -> Database : INSERT Message
+
+ChatMessageServiceImpl --> ChatMessageController : Success
+ChatMessageController --> User : Message Sent
+
+@enduml
