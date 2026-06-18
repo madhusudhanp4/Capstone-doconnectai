@@ -1,0 +1,35 @@
+.profile-card{
+    text-align:center;
+    padding:40px;
+}
+
+.profile-avatar{
+    width:100px;
+    height:100px;
+    margin:auto;
+    border-radius:50%;
+    background:var(--bg-secondary);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+.role-badge{
+    display:inline-block;
+    margin-top:12px;
+    padding:8px 16px;
+    border-radius:20px;
+    background:rgba(99,102,241,.15);
+    color:var(--primary);
+}
+
+.profile-stats{
+    margin:40px 0;
+}
+
+.profile-section{
+    padding:30px;
+    margin-bottom:30px;
+}

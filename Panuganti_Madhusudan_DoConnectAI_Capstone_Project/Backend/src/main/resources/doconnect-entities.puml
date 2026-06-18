@@ -1,0 +1,76 @@
+@startuml
+title DoconnectAI - Entity Relationship Diagram
+
+class User {
+  id : Integer
+  name : String
+  email : String
+  password : String
+  createdAt : LocalDateTime
+  role : Role
+}
+
+class Question {
+  id : Integer
+  title : String
+  description : String
+  createdAt : LocalDateTime
+}
+
+class Answer {
+  id : Integer
+  content : String
+  voteCount : Integer
+  accepted : boolean
+  createdAt : LocalDateTime
+}
+
+class Comment {
+  id : Integer
+  content : String
+  createdAt : LocalDateTime
+}
+
+class ChatRoom {
+  id : Integer
+  name : String
+  description : String
+}
+
+class ChatMessage {
+  id : Integer
+  message : String
+  createdAt : LocalDateTime
+}
+
+class Vote {
+  id : Integer
+  type : VoteType
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum VoteType {
+  UPVOTE
+  DOWNVOTE
+}
+
+User "1" --> "*" Question : asks
+User "1" --> "*" Answer : writes
+User "1" --> "*" Comment : writes
+User "1" --> "*" ChatMessage : sends
+User "1" --> "*" Vote : casts
+
+Question "1" --> "*" Answer : has
+Answer "1" --> "*" Comment : has
+Answer "1" --> "*" Vote : receives
+
+ChatRoom "1" --> "*" ChatMessage : contains
+
+User --> Role
+Vote --> VoteType
+
+@enduml

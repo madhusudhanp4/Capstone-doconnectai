@@ -1,0 +1,29 @@
+@startuml
+title Ask Question Sequence Diagram
+
+actor User
+
+participant QuestionController
+participant IQuestionService
+participant QuestionServiceImpl
+participant UserRepo
+participant QuestionRepo
+database Database
+
+User -> QuestionController : Post Question
+QuestionController -> IQuestionService : saveQuestion(dto)
+IQuestionService -> QuestionServiceImpl : saveQuestion(dto)
+
+QuestionServiceImpl -> UserRepo : findById(userId)
+UserRepo -> Database : SELECT User
+Database --> UserRepo : User
+
+QuestionServiceImpl -> QuestionRepo : save(question)
+QuestionRepo -> Database : INSERT Question
+
+Database --> QuestionRepo : Saved Question
+QuestionRepo --> QuestionServiceImpl : Question
+QuestionServiceImpl --> QuestionController : Success
+QuestionController --> User : Question Created
+
+@enduml

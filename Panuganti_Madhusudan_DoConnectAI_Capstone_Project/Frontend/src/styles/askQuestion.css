@@ -1,0 +1,69 @@
+.ask-container{
+    min-height:100vh;
+    background:var(--bg-primary);
+}
+
+.ask-card{
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:35px;
+    margin-top:30px;
+    box-shadow:var(--shadow);
+}
+
+.ask-form-group{
+    margin-bottom:25px;
+}
+
+.ask-form-group label{
+    display:block;
+    margin-bottom:10px;
+    color:var(--text-secondary);
+    font-weight:500;
+}
+
+.ask-form-group input,
+.ask-form-group textarea{
+    width:100%;
+    padding:16px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:var(--bg-secondary);
+    color:var(--text-primary);
+    outline:none;
+    font-size:15px;
+    transition:var(--transition);
+}
+
+.ask-form-group input:focus,
+.ask-form-group textarea:focus{
+    border-color:var(--primary);
+}
+
+.ask-form-group textarea{
+    min-height:220px;
+    resize:vertical;
+}
+
+.ask-tips{
+    margin-top:25px;
+    padding:20px;
+    border-radius:14px;
+    background:rgba(99,102,241,.08);
+    border:1px solid rgba(99,102,241,.2);
+}
+
+.ask-tips h5{
+    margin-bottom:12px;
+}
+
+.ask-tips ul{
+    margin:0;
+    padding-left:20px;
+}
+
+.ask-tips li{
+    color:var(--text-secondary);
+    margin-bottom:8px;
+}

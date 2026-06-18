@@ -1,0 +1,41 @@
+@startuml
+left to right direction
+
+actor User
+
+rectangle "Authentication Module" as Auth
+rectangle "Question Module" as Question
+rectangle "Answer Module" as Answer
+rectangle "Comment Module" as Comment
+rectangle "Voting Module" as Vote
+rectangle "Chat Module" as Chat
+rectangle "AI Module" as AI
+
+database "Users DB" as UDB
+database "Questions DB" as QDB
+database "Answers DB" as ADB
+database "Comments DB" as CDB
+database "Votes DB" as VDB
+database "Chat DB" as CHDB
+
+User --> Auth
+Auth --> UDB
+
+User --> Question
+Question --> QDB
+
+User --> Answer
+Answer --> ADB
+
+User --> Comment
+Comment --> CDB
+
+User --> Vote
+Vote --> VDB
+
+User --> Chat
+Chat --> CHDB
+
+User --> AI
+
+@enduml

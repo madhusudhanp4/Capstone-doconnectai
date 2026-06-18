@@ -1,0 +1,59 @@
+@startuml
+title DoconnectAI - System Sequence Diagram
+
+actor User
+
+participant UserController
+participant QuestionController
+participant AnswerController
+participant CommentController
+participant VoteController
+participant ChatMessageController
+participant AiController
+
+participant UserServiceImpl
+participant QuestionServiceImpl
+participant AnswerServiceImpl
+participant CommentServiceImpl
+participant VoterServiceImpl
+participant ChatMessageServiceImpl
+participant AIClientService
+
+database Database
+
+== Registration/Login ==
+User -> UserController : Register/Login
+UserController -> UserServiceImpl : authenticate()
+UserServiceImpl -> Database : User Data
+
+== Ask Question ==
+User -> QuestionController : Ask Question
+QuestionController -> QuestionServiceImpl : saveQuestion()
+QuestionServiceImpl -> Database : Store Question
+
+== Post Answer ==
+User -> AnswerController : Post Answer
+AnswerController -> AnswerServiceImpl : saveAnswer()
+AnswerServiceImpl -> Database : Store Answer
+
+== Comment ==
+User -> CommentController : Add Comment
+CommentController -> CommentServiceImpl : saveComment()
+CommentServiceImpl -> Database : Store Comment
+
+== Vote ==
+User -> VoteController : Upvote/Downvote
+VoteController -> VoterServiceImpl : vote()
+VoterServiceImpl -> Database : Update Vote
+
+== Chat ==
+User -> ChatMessageController : Send Message
+ChatMessageController -> ChatMessageServiceImpl : saveMessage()
+ChatMessageServiceImpl -> Database : Store Message
+
+== AI Query ==
+User -> AiController : Ask AI
+AiController -> AIClientService : generateResponse()
+AIClientService -> Database : Store History (optional)
+
+@enduml

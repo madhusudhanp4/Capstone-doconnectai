@@ -1,0 +1,30 @@
+@startuml
+title Vote Answer Sequence Diagram
+
+actor User
+
+participant VoteController
+participant IVoteService
+participant VoterServiceImpl
+participant UserRepo
+participant AnswerRepo
+participant VoteRepo
+database Database
+
+User -> VoteController : Upvote/Downvote
+VoteController -> IVoteService : vote(answerId,type)
+IVoteService -> VoterServiceImpl : vote(answerId,type)
+
+VoterServiceImpl -> UserRepo : findById(userId)
+VoterServiceImpl -> AnswerRepo : findById(answerId)
+
+VoterServiceImpl -> VoteRepo : save(vote)
+VoteRepo -> Database : INSERT Vote
+
+VoterServiceImpl -> AnswerRepo : updateVoteCount()
+AnswerRepo -> Database : UPDATE Answer
+
+VoterServiceImpl --> VoteController : Success
+VoteController --> User : Vote Updated
+
+@enduml

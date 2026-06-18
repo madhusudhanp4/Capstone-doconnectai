@@ -1,0 +1,32 @@
+@startuml
+title Post Answer Sequence Diagram
+
+actor User
+
+participant AnswerController
+participant IAnswerService
+participant AnswerServiceImpl
+participant UserRepo
+participant QuestionRepo
+participant AnswerRepo
+database Database
+
+User -> AnswerController : Submit Answer
+AnswerController -> IAnswerService : addAnswer(dto)
+IAnswerService -> AnswerServiceImpl : addAnswer(dto)
+
+AnswerServiceImpl -> UserRepo : findById(userId)
+UserRepo -> Database : SELECT User
+
+AnswerServiceImpl -> QuestionRepo : findById(questionId)
+QuestionRepo -> Database : SELECT Question
+
+AnswerServiceImpl -> AnswerRepo : save(answer)
+AnswerRepo -> Database : INSERT Answer
+
+Database --> AnswerRepo : Answer
+AnswerRepo --> AnswerServiceImpl : Saved Answer
+AnswerServiceImpl --> AnswerController : Success
+AnswerController --> User : Answer Posted
+
+@enduml
