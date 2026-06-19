@@ -3,6 +3,7 @@ package com.doconnectai.entity;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,11 +31,13 @@ public class ChatMessage {
 
 	private LocalDateTime createdAt = LocalDateTime.now();
 
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User user;
 
-	@ManyToOne
-	@JoinColumn(name = "room_id")
-	private ChatRoom room;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "room_id")
+    private ChatRoom room;
+
 }
